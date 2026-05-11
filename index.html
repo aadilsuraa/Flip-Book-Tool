@@ -9,20 +9,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0b0b0e;--bg2:#111116;--card:#18181f;--card2:#202028;
-  --border:rgba(255,255,255,.07);--gold:#c9933a;--goldl:#e8b45a;
-  --golddim:rgba(201,147,58,.13);--text:#f0ede8;--muted:#5c5a6e;--muted2:#9996a8;
+  --bg:#0b0b0e;--card:#18181f;--card2:#202028;
+  --border:rgba(255,255,255,.07);
+  --gold:#c9933a;--goldl:#e8b45a;--golddim:rgba(201,147,58,.13);
+  --text:#f0ede8;--muted:#5c5a6e;--muted2:#9996a8;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow-x:hidden}
 body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px}
 
-/* NAV */
 nav{
   height:52px;display:flex;align-items:center;justify-content:space-between;
   padding:0 1.6rem;border-bottom:1px solid var(--border);
   position:sticky;top:0;z-index:500;
-  background:rgba(11,11,14,.94);backdrop-filter:blur(20px);
+  background:rgba(11,11,14,.95);backdrop-filter:blur(20px);
 }
 .logo{font-family:'Playfair Display',serif;font-size:1.3rem}
 .logo b{color:var(--goldl)}
@@ -32,7 +32,7 @@ nav{
 .nb.gold{background:var(--gold);color:#0b0b0e;border-color:var(--gold)}
 .nb.gold:hover{background:var(--goldl)}
 
-/* ── UPLOAD ── */
+/* UPLOAD */
 #su{
   min-height:calc(100vh - 52px);display:flex;flex-direction:column;align-items:center;
   padding:5rem 1.5rem 4rem;
@@ -54,11 +54,7 @@ nav{
 .dzico{font-size:3.2rem;margin-bottom:1rem}
 .dz h3{font-size:1.1rem;font-weight:500;margin-bottom:.38rem}
 .dz p{color:var(--muted);font-size:.81rem}
-.dzbtn{
-  margin-top:1.4rem;background:var(--gold);color:#0b0b0e;
-  border-radius:999px;padding:.66rem 2rem;font-size:.83rem;
-  font-weight:600;font-family:inherit;border:none;cursor:pointer;pointer-events:none;
-}
+.dzbtn{margin-top:1.4rem;background:var(--gold);color:#0b0b0e;border-radius:999px;padding:.66rem 2rem;font-size:.83rem;font-weight:600;font-family:inherit;border:none;cursor:pointer;pointer-events:none}
 
 .pw{display:none;width:100%;max-width:580px;margin-top:1.7rem}
 .pl{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-bottom:.45rem}
@@ -68,29 +64,21 @@ nav{
 .pills{display:flex;flex-wrap:wrap;gap:.55rem;justify-content:center;margin-top:3.5rem;max-width:600px}
 .pill{display:flex;align-items:center;gap:.4rem;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:.4rem .85rem;font-size:.72rem;color:var(--muted2)}
 
-/* ── STYLE PICKER ── */
+/* STYLE PICKER */
 #ss{display:none;max-width:900px;margin:0 auto;padding:3.5rem 1.5rem 4rem;min-height:calc(100vh - 52px)}
 .stitle{font-family:'Playfair Display',serif;font-size:1.9rem;margin-bottom:.3rem}
 .ssub{color:var(--muted);font-size:.84rem;margin-bottom:2rem}
 .egrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(138px,1fr));gap:.75rem;margin-bottom:2.5rem}
-.ec{
-  border:1.5px solid var(--border);border-radius:10px;padding:1.25rem .8rem 1rem;
-  text-align:center;cursor:pointer;background:var(--card);transition:.15s;
-}
+.ec{border:1.5px solid var(--border);border-radius:10px;padding:1.25rem .8rem 1rem;text-align:center;cursor:pointer;background:var(--card);transition:.15s}
 .ec:hover{border-color:rgba(201,147,58,.32);background:var(--card2)}
 .ec.sel{border-color:var(--gold);background:var(--golddim)}
 .eco{font-size:2rem;margin-bottom:.55rem;display:block}
 .ecn{display:block;font-size:.84rem;font-weight:500;margin-bottom:.2rem}
 .ecd{display:block;color:var(--muted);font-size:.68rem;line-height:1.45}
-.gobtn{
-  display:block;margin:0 auto;background:var(--gold);color:#0b0b0e;
-  border:none;border-radius:999px;padding:.9rem 3rem;
-  font-size:.94rem;font-weight:600;font-family:inherit;cursor:pointer;transition:.15s;
-}
+.gobtn{display:block;margin:0 auto;background:var(--gold);color:#0b0b0e;border:none;border-radius:999px;padding:.9rem 3rem;font-size:.94rem;font-weight:600;font-family:inherit;cursor:pointer;transition:.15s}
 .gobtn:hover{background:var(--goldl)}
-.gobtn:active{transform:scale(.97)}
 
-/* ── VIEWER ── */
+/* VIEWER */
 #sv{display:none}
 .vbar{
   height:48px;display:flex;align-items:center;justify-content:space-between;
@@ -99,58 +87,43 @@ nav{
 }
 .vbl{display:flex;align-items:center;gap:.6rem}
 .vbr{display:flex;align-items:center;gap:.3rem;flex-wrap:wrap}
-.vt{
-  background:var(--card2);border:1px solid var(--border);color:var(--muted2);
-  border-radius:6px;padding:.28rem .6rem;font-size:.68rem;font-family:inherit;
-  cursor:pointer;transition:.13s;white-space:nowrap;font-weight:500;
-}
+.vt{background:var(--card2);border:1px solid var(--border);color:var(--muted2);border-radius:6px;padding:.28rem .6rem;font-size:.68rem;font-family:inherit;cursor:pointer;transition:.13s;white-space:nowrap;font-weight:500}
 .vt:hover{background:rgba(201,147,58,.1);border-color:rgba(201,147,58,.3)}
 .vt.on{background:rgba(201,147,58,.16);border-color:var(--gold);color:var(--goldl)}
 .pn{font-size:.76rem;color:var(--muted);min-width:74px;white-space:nowrap}
-.sndtog{
-  display:flex;align-items:center;gap:.3rem;
-  font-size:.68rem;color:var(--muted2);cursor:pointer;user-select:none;
-  background:var(--card2);border:1px solid var(--border);
-  border-radius:6px;padding:.28rem .6rem;transition:.13s;
-}
+.sndtog{display:flex;align-items:center;gap:.3rem;font-size:.68rem;color:var(--muted2);cursor:pointer;user-select:none;background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:.28rem .6rem;transition:.13s}
 .sndtog.on{background:rgba(201,147,58,.16);border-color:var(--gold);color:var(--goldl)}
 
-/* ── STAGE ── */
+/* STAGE — full remaining height */
 .stage{
-  /* Fill remaining viewport height */
   height:calc(100vh - 100px);
   display:flex;align-items:center;justify-content:center;
-  background:#090909;
-  position:relative;overflow:hidden;
+  background:#080809;position:relative;overflow:hidden;
 }
-/* Subtle vignette */
 .stage::after{
   content:'';position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 70% 60% at 50% 50%,transparent 40%,rgba(0,0,0,.55) 100%);
+  background:radial-gradient(ellipse 75% 65% at 50% 50%,transparent 35%,rgba(0,0,0,.6) 100%);
 }
 
-/* Shadow effect under book */
-#book-root{
-  position:relative;z-index:1;
-}
+#book-root{position:relative;z-index:1}
+
+/* Ground shadow */
 #book-root::after{
-  content:'';
-  position:absolute;bottom:-30px;left:10%;right:10%;
-  height:40px;
-  background:radial-gradient(ellipse 80% 100% at 50% 0%,rgba(0,0,0,.6),transparent);
-  filter:blur(12px);
-  z-index:-1;pointer-events:none;
+  content:'';position:absolute;bottom:-28px;left:5%;right:5%;
+  height:36px;
+  background:radial-gradient(ellipse 90% 100% at 50% 0%,rgba(0,0,0,.65),transparent);
+  filter:blur(10px);z-index:-1;pointer-events:none;
 }
 
-/* StPageFlip overrides — ensure paper white */
-#stpf-container .page{background:#fff!important}
-#stpf-container .page canvas{display:block;width:100%!important;height:100%!important}
+/* StPageFlip canvas — CRITICAL: no CSS width/height override so it stays pixel-perfect */
+#stpf-book{display:block}
+#stpf-book .page{background:#fff}
 
 /* Nav arrows */
 .arr{
   position:absolute;top:50%;transform:translateY(-50%);
   width:48px;height:48px;border-radius:50%;
-  background:rgba(18,18,22,.96);border:1px solid rgba(255,255,255,.09);
+  background:rgba(18,18,22,.97);border:1px solid rgba(255,255,255,.09);
   color:var(--text);font-size:1.5rem;display:flex;align-items:center;justify-content:center;
   cursor:pointer;transition:.16s;z-index:50;user-select:none;
   box-shadow:0 4px 24px rgba(0,0,0,.5);
@@ -159,80 +132,43 @@ nav{
 .arr.off{opacity:0;pointer-events:none}
 #ap{left:1rem}#an{right:1rem}
 
-/* ── SLIDER ── */
-.sl-vp{overflow:hidden;position:relative}
+/* Slider */
+.sl-vp{overflow:hidden;border-radius:3px}
 .sl-tr{display:flex;will-change:transform}
-.sl-pg canvas{display:block}
 
-/* ── COVERFLOW ── */
-.cf-stage{
-  position:relative;display:flex;align-items:center;justify-content:center;
-  perspective:1200px;overflow:visible;
-}
-.cfi{
-  position:absolute;border-radius:3px;overflow:hidden;cursor:pointer;
-  will-change:transform;transition:transform .52s cubic-bezier(.4,0,.2,1),opacity .52s,box-shadow .52s;
-}
-.cfi canvas{display:block}
+/* Coverflow */
+.cf-stage{position:relative;display:flex;align-items:center;justify-content:center;perspective:1200px;overflow:visible}
+.cfi{position:absolute;border-radius:3px;overflow:hidden;cursor:pointer;will-change:transform;transition:transform .52s cubic-bezier(.4,0,.2,1),opacity .52s,box-shadow .52s}
 
-/* ── CARDS ── */
+/* Cards */
 .cd-stage{position:relative}
-.cd-item{
-  position:absolute;top:0;left:0;border-radius:8px;overflow:hidden;
-  will-change:transform;
-}
-.cd-item canvas{display:block}
+.cd-item{position:absolute;top:0;left:0;border-radius:8px;overflow:hidden;will-change:transform}
 
-/* ── ONE PAGE ── */
+/* One Page */
 .op-wrap{border-radius:3px;overflow:hidden;will-change:transform,opacity}
-.op-wrap canvas{display:block}
 
-/* ── NOTEBOOK ── */
+/* Notebook */
 .nb-outer{display:flex;align-items:stretch}
-.nb-rings{
-  display:flex;flex-direction:column;justify-content:space-around;align-items:center;
-  padding:.8rem .3rem;background:linear-gradient(180deg,#1e1e2a,#16161f);
-  border-radius:8px 0 0 8px;border:1px solid rgba(255,255,255,.05);border-right:none;
-  min-width:28px;
-}
-.nb-ring{
-  width:20px;height:14px;border:2.5px solid #4a4a62;border-radius:50%;
-  background:linear-gradient(135deg,#252535,#0f0f18);
-  box-shadow:inset 0 1px 3px rgba(0,0,0,.7),0 1px 2px rgba(255,255,255,.04);
-}
-.nb-pg{overflow:hidden;border-radius:0 6px 6px 0}
-.nb-pg canvas{display:block}
+.nb-rings{display:flex;flex-direction:column;justify-content:space-around;align-items:center;padding:.8rem .3rem;background:linear-gradient(180deg,#1e1e2a,#16161f);border-radius:8px 0 0 8px;border:1px solid rgba(255,255,255,.05);border-right:none;min-width:28px}
+.nb-ring{width:20px;height:14px;border:2.5px solid #4a4a62;border-radius:50%;background:linear-gradient(135deg,#252535,#0f0f18);box-shadow:inset 0 1px 3px rgba(0,0,0,.7)}
+.nb-pg{overflow:hidden;border-radius:0 6px 6px 0;will-change:transform,opacity}
 
-/* ── ALBUM ── */
+/* Album */
 .alb-outer{position:relative}
-.alb-rings{
-  position:absolute;top:-14px;left:0;right:0;height:28px;
-  display:flex;justify-content:space-around;padding:0 16px;
-  align-items:center;z-index:20;pointer-events:none;
-}
-.alb-ring{
-  width:22px;height:16px;border:2.5px solid #4a4a62;border-radius:50%;
-  background:linear-gradient(135deg,#252535,#0f0f18);
-  box-shadow:inset 0 1px 3px rgba(0,0,0,.7);
-}
+.alb-rings{position:absolute;top:-14px;left:0;right:0;height:28px;display:flex;justify-content:space-around;padding:0 16px;align-items:center;z-index:20;pointer-events:none}
+.alb-ring{width:22px;height:16px;border:2.5px solid #4a4a62;border-radius:50%;background:linear-gradient(135deg,#252535,#0f0f18);box-shadow:inset 0 1px 3px rgba(0,0,0,.7)}
 .alb-pg{overflow:hidden;border-radius:3px;position:relative;top:14px;will-change:transform,opacity}
-.alb-pg canvas{display:block}
 
-/* ── THUMBS ── */
+/* Thumbs */
 .ts{display:flex;gap:4px;overflow-x:auto;padding:.55rem 1rem;background:var(--card);border-top:1px solid var(--border)}
 .ts::-webkit-scrollbar{height:3px}
 .ts::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:99px}
-.th{
-  flex-shrink:0;border:1.5px solid var(--border);border-radius:3px;
-  overflow:hidden;cursor:pointer;background:#fff;transition:.13s;
-  width:40px;
-}
+.th{flex-shrink:0;border:1.5px solid var(--border);border-radius:3px;overflow:hidden;cursor:pointer;background:#fff;transition:.13s;width:40px}
 .th:hover{border-color:rgba(201,147,58,.5);transform:translateY(-2px)}
 .th.cur{border-color:var(--gold)}
-.th canvas{display:block;width:100%}
+.th canvas{display:block;width:100%;height:auto}
 
-/* Loader */
-.ld{display:none;position:fixed;inset:0;z-index:999;background:rgba(9,9,12,.94);backdrop-filter:blur(14px);flex-direction:column;align-items:center;justify-content:center;gap:1rem}
+.ld{display:none;position:fixed;inset:0;z-index:999;background:rgba(9,9,12,.95);backdrop-filter:blur(14px);flex-direction:column;align-items:center;justify-content:center;gap:1rem}
 .ld.on{display:flex}
 .spin{width:38px;height:38px;border:2.5px solid rgba(255,255,255,.07);border-top-color:var(--gold);border-radius:50%;animation:sp .7s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
@@ -249,12 +185,10 @@ nav{
   </div>
 </nav>
 
-<!-- UPLOAD -->
 <section id="su">
-  <p class="eyebrow">Same engine as Heyzine · Free · Private</p>
+  <p class="eyebrow">Crystal Clear · Same Engine as Heyzine · Free</p>
   <h1 class="htitle">Your PDF as a<br><i>living flipbook</i></h1>
-  <p class="hsub">Upload any PDF. Drag corners to flip pages just like a real book. Eight animation styles including real page curl with shadows.</p>
-
+  <p class="hsub">Upload any PDF. Drag page corners to flip like a real book. Crystal-clear text and images at every size.</p>
   <div class="dz" id="dz">
     <input type="file" id="fi" accept=".pdf">
     <div class="dzico">📄</div>
@@ -262,26 +196,23 @@ nav{
     <p>Any size · Any page count · Never leaves your device</p>
     <button class="dzbtn">Choose PDF File</button>
   </div>
-
   <div class="pw" id="pw">
     <div class="pl"><span id="plbl">Rendering…</span><span id="ppct">0%</span></div>
     <div class="pt"><div class="pf" id="pf"></div></div>
   </div>
-
   <div class="pills">
     <div class="pill">🖱️ Drag corners to flip</div>
     <div class="pill">🔊 Real page-turn sound</div>
     <div class="pill">🎨 8 animation effects</div>
     <div class="pill">📱 Touch &amp; swipe</div>
     <div class="pill">⌨️ Arrow keys</div>
-    <div class="pill">🔒 100% local</div>
+    <div class="pill">🔍 Crystal clear text</div>
   </div>
 </section>
 
-<!-- STYLE PICKER -->
 <section id="ss">
   <h2 class="stitle">Choose your effect</h2>
-  <p class="ssub">Pick how pages turn. You can switch live while reading.</p>
+  <p class="ssub">Pick how pages turn. Switch live while reading.</p>
   <div class="egrid" id="egrid">
     <div class="ec sel" data-e="magazine"><span class="eco">📖</span><span class="ecn">Magazine</span><span class="ecd">Soft curl · drag any corner</span></div>
     <div class="ec" data-e="book"><span class="eco">📚</span><span class="ecn">Book</span><span class="ecd">Hard cover · snappy flip</span></div>
@@ -289,13 +220,12 @@ nav{
     <div class="ec" data-e="notebook"><span class="eco">📓</span><span class="ecn">Notebook</span><span class="ecd">Spiral rings · side-bound</span></div>
     <div class="ec" data-e="slider"><span class="eco">🎞️</span><span class="ecn">Slider</span><span class="ecd">Clean horizontal slide</span></div>
     <div class="ec" data-e="cards"><span class="eco">🃏</span><span class="ecn">Cards</span><span class="ecd">Stacked flashcards</span></div>
-    <div class="ec" data-e="coverflow"><span class="eco">🌀</span><span class="ecn">Coverflow</span><span class="ecd">3D carousel · neighbors visible</span></div>
+    <div class="ec" data-e="coverflow"><span class="eco">🌀</span><span class="ecn">Coverflow</span><span class="ecd">3D carousel effect</span></div>
     <div class="ec" data-e="onepage"><span class="eco">📃</span><span class="ecn">One Page</span><span class="ecd">Single page zoom-fade</span></div>
   </div>
   <button class="gobtn" onclick="openViewer()">✦ Open Flipbook</button>
 </section>
 
-<!-- VIEWER -->
 <section id="sv">
   <div class="vbar">
     <div class="vbl">
@@ -314,34 +244,46 @@ nav{
       <div class="sndtog on" id="sndtog" onclick="toggleSnd()"><span id="sndico">🔊</span> Sound</div>
     </div>
   </div>
-
   <div class="stage" id="stage">
     <button class="arr off" id="ap" onclick="goPrev()">&#8249;</button>
     <div id="book-root"></div>
     <button class="arr off" id="an" onclick="goNext()">&#8250;</button>
   </div>
-
   <div class="ts" id="ts"></div>
 </section>
 
 <div class="ld" id="ld"><div class="spin"></div><p class="ldtxt" id="ldtxt">Rendering…</p></div>
 
 <script>
+'use strict';
 pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-/* ═══════════════════ STATE ═══════════════════ */
-let pages=[];        // full-res canvases (retina)
-let blobURLs=[];     // object URLs for StPageFlip
-let thumbs=[];       // tiny canvases
-let effect='magazine';
-let cur=0;
-let total=0;
-let pf=null;         // StPageFlip instance
-let soundOn=true;
-let busy=false;
-let _st={};          // per-effect state
+/*
+ ╔══════════════════════════════════════════════════════════╗
+ ║  THE KEY PRINCIPLE FOR CRYSTAL-CLEAR TEXT:               ║
+ ║  Render ONCE at EXACTLY the pixels StPageFlip will show. ║
+ ║  No rescaling. No CSS width/height overrides.            ║
+ ║  canvas.width === displayed pixel width (including DPR). ║
+ ╚══════════════════════════════════════════════════════════╝
+*/
 
-/* ═══════════════════ SOUND ═══════════════════ */
+let rawPages  = [];   // {canvas, w, h} — rendered at exact display pixels
+let blobURLs  = [];   // PNG blobs for StPageFlip loadFromImages
+let thumbs    = [];   // tiny canvases for strip
+let effect    = 'magazine';
+let cur       = 0;
+let total     = 0;
+let pf        = null; // StPageFlip instance
+let soundOn   = true;
+let busy      = false;
+let _st       = {};
+
+// Book display dimensions (computed once, used by all modes)
+let BOOK_W = 0; // logical width per page (half-spread for mag/book)
+let BOOK_H = 0; // logical height
+let BOOK_DPR = 1; // actual device pixel ratio used
+
+/* ══ SOUND ══ */
 const SND={};
 ['sm','md','lg'].forEach(k=>{
   const a=new Audio(`https://cdnc.heyzine.com/flipbook/snd/flip-ct-${k}.mp3`);
@@ -358,60 +300,109 @@ function toggleSnd(){
   document.getElementById('sndico').textContent=soundOn?'🔊':'🔇';
 }
 
-/* ═══════════════════ UPLOAD ═══════════════════ */
+/* ══ UPLOAD ══ */
 const dzel=document.getElementById('dz');
 const fiel=document.getElementById('fi');
 dzel.addEventListener('click',()=>fiel.click());
 dzel.addEventListener('dragover',e=>{e.preventDefault();dzel.classList.add('over')});
 dzel.addEventListener('dragleave',()=>dzel.classList.remove('over'));
-dzel.addEventListener('drop',e=>{e.preventDefault();dzel.classList.remove('over');const f=e.dataTransfer.files[0];if(f?.type==='application/pdf')loadPDF(f)});
-fiel.addEventListener('change',e=>{if(e.target.files[0])loadPDF(e.target.files[0])});
+dzel.addEventListener('drop',e=>{
+  e.preventDefault();dzel.classList.remove('over');
+  const f=e.dataTransfer.files[0];
+  if(f?.type==='application/pdf') loadPDF(f);
+});
+fiel.addEventListener('change',e=>{if(e.target.files[0]) loadPDF(e.target.files[0])});
 
 async function loadPDF(file){
-  pages=[];blobURLs=[];thumbs=[];
+  rawPages=[];blobURLs=[];thumbs=[];cur=0;
   document.getElementById('pw').style.display='block';
-  dzel.style.opacity='.4';dzel.style.pointerEvents='none';
+  dzel.style.opacity='.4'; dzel.style.pointerEvents='none';
 
-  const buf=await file.arrayBuffer();
-  const pdf=await pdfjsLib.getDocument({data:buf}).promise;
-  total=pdf.numPages;
+  const buf = await file.arrayBuffer();
+  const pdf = await pdfjsLib.getDocument({data:buf}).promise;
+  total = pdf.numPages;
 
-  // High resolution: 2× for retina sharpness
-  const DPR=Math.min(window.devicePixelRatio||1,2);
+  /*
+   * STEP 1: Figure out the actual display size BEFORE rendering.
+   *
+   * The stage fills (100vw - 60px) wide and (100vh - 100px) tall.
+   * For magazine/book: each page = half that width.
+   * We pick the layout as if magazine (most constrained) so all modes work.
+   *
+   * DPR: use actual devicePixelRatio so 1px CSS = 1px physical on retina.
+   * This means canvas.width = logicalWidth × DPR — rendered at native resolution.
+   */
+  BOOK_DPR = window.devicePixelRatio || 1;
+
+  // Measure a representative page
+  const pg1 = await pdf.getPage(1);
+  const vp1 = pg1.getViewport({scale:1});
+  const PDF_ASPECT = vp1.height / vp1.width; // h/w ratio of source
+
+  // Available stage pixels (logical)
+  const stageW = window.innerWidth  - 60;
+  const stageH = window.innerHeight - 110; // nav(52) + vbar(48) = 100
+
+  // For magazine/book we show two pages side by side, so each = stageW/2
+  // For other modes we show one page at up to stageW
+  // We compute for magazine (tighter) so images work for all modes
+  let logW = Math.floor(stageW / 2);     // logical px per page (mag/book)
+  let logH = Math.round(logW * PDF_ASPECT);
+  if(logH > stageH){ logH = stageH; logW = Math.round(logH / PDF_ASPECT); }
+
+  BOOK_W = logW;
+  BOOK_H = logH;
+
+  // Physical pixels to render at (retina-sharp)
+  const physW = Math.round(logW * BOOK_DPR);
+  const physH = Math.round(logH * BOOK_DPR);
+
+  // Scale to fill physW exactly
+  const SCALE = physW / vp1.width;
 
   for(let i=1;i<=total;i++){
-    const pg=await pdf.getPage(i);
-    const vp0=pg.getViewport({scale:1});
-    // Target ~900 logical px wide
-    const scale=(900/vp0.width)*DPR;
-    const vp=pg.getViewport({scale});
+    const pg = await pdf.getPage(i);
+    const vp = pg.getViewport({scale: SCALE});
 
-    const c=document.createElement('canvas');
-    c.width=vp.width; c.height=vp.height;
-    c._lw=Math.round(vp.width/DPR);
-    c._lh=Math.round(vp.height/DPR);
-    const ctx=c.getContext('2d',{alpha:false});
-    ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,c.width,c.height);
-    await pg.render({canvasContext:ctx,viewport:vp}).promise;
-    pages.push(c);
+    /* ── Main canvas: physW × physH, displayed as logW × logH ── */
+    const c = document.createElement('canvas');
+    c.width  = physW;   // exact physical pixels — NO CSS override
+    c.height = physH;
+    // Store logical size for layout
+    c._logW = logW;
+    c._logH = logH;
 
-    // Blob URL for StPageFlip
-    const blob=await new Promise(res=>c.toBlob(res,'image/jpeg',0.97));
+    const ctx = c.getContext('2d', {alpha:false, desynchronized:true});
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, physW, physH);
+    await pg.render({canvasContext:ctx, viewport:vp}).promise;
+    rawPages.push(c);
+
+    /*
+     * STEP 2: Create blob URL.
+     * We DON'T use JPEG — JPEG blurs text edges at any quality.
+     * PNG is lossless → pixel-perfect text.
+     * StPageFlip will display this image at exactly logW × logH CSS pixels,
+     * which maps to physW × physH physical pixels = crystal clear.
+     */
+    const blob = await canvasToBlob(c, 'image/png');
     blobURLs.push(URL.createObjectURL(blob));
 
-    // Thumb
-    const tvp=pg.getViewport({scale:0.14});
-    const tc=document.createElement('canvas');
-    tc.width=tvp.width;tc.height=tvp.height;
-    const tx=tc.getContext('2d',{alpha:false});
-    tx.fillStyle='#fff';tx.fillRect(0,0,tc.width,tc.height);
-    await pg.render({canvasContext:tx,viewport:tvp}).promise;
+    /* ── Thumb: tiny, fast ── */
+    const tvp = pg.getViewport({scale: 0.1});
+    const tc  = document.createElement('canvas');
+    tc.width  = tvp.width; tc.height = tvp.height;
+    const tx  = tc.getContext('2d', {alpha:false});
+    tx.fillStyle = '#fff'; tx.fillRect(0,0,tc.width,tc.height);
+    await pg.render({canvasContext:tx, viewport:tvp}).promise;
     thumbs.push(tc);
 
-    const pct=Math.round(i/total*100);
-    document.getElementById('pf').style.width=pct+'%';
-    document.getElementById('ppct').textContent=pct+'%';
-    document.getElementById('plbl').textContent=`Rendering page ${i} of ${total}…`;
+    const pct = Math.round(i/total*100);
+    document.getElementById('pf').style.width   = pct+'%';
+    document.getElementById('ppct').textContent = pct+'%';
+    document.getElementById('plbl').textContent = `Rendering page ${i} of ${total}…`;
   }
 
   dzel.style.opacity='1'; dzel.style.pointerEvents='';
@@ -421,13 +412,16 @@ async function loadPDF(file){
   window.scrollTo(0,0);
 }
 
-/* ═══════════════════ STYLE PICKER ═══════════════════ */
+function canvasToBlob(canvas, type){
+  return new Promise(res => canvas.toBlob(res, type));
+}
+
+/* ══ STYLE PICKER ══ */
 document.getElementById('egrid').addEventListener('click',e=>{
   const card=e.target.closest('.ec'); if(!card) return;
   document.querySelectorAll('.ec').forEach(c=>c.classList.remove('sel'));
   card.classList.add('sel'); effect=card.dataset.e;
 });
-
 function openViewer(){
   cur=0;
   document.getElementById('ss').style.display='none';
@@ -436,169 +430,161 @@ function openViewer(){
   buildEffect(effect);
   syncTabs(effect);
 }
+function sw(btn){ effect=btn.dataset.v; syncTabs(effect); destroy(); buildEffect(effect); }
+function syncTabs(e){ document.querySelectorAll('.vt[data-v]').forEach(b=>b.classList.toggle('on',b.dataset.v===e)); }
 
-function sw(btn){
-  effect=btn.dataset.v;
-  syncTabs(effect);
-  destroy();
-  buildEffect(effect);
-}
-
-function syncTabs(e){
-  document.querySelectorAll('.vt[data-v]').forEach(b=>b.classList.toggle('on',b.dataset.v===e));
-}
-
-/* ═══════════════════ HELPERS ═══════════════════ */
-function stageWH(){
-  const s=document.getElementById('stage').getBoundingClientRect();
-  return{w:s.width,h:s.height};
-}
-
-// Given max logical dims, compute best page size preserving aspect of page[0]
-function pgSize(maxW,maxH){
-  if(!pages.length) return{w:420,h:594};
-  const lw=pages[0]._lw, lh=pages[0]._lh;
-  const asp=lh/lw;
-  let w=Math.min(maxW,lw); let h=Math.round(w*asp);
-  if(h>maxH){h=Math.min(maxH,lh);w=Math.round(h/asp);}
-  return{w,h};
-}
-
-// Stamp full-res srcCanvas onto a dest canvas at logical size w×h (DPR-aware)
-function stamp(src,dest,w,h){
-  const dpr=window.devicePixelRatio||1;
-  dest.width=Math.round(w*dpr); dest.height=Math.round(h*dpr);
-  dest.style.width=w+'px'; dest.style.height=h+'px';
-  const ctx=dest.getContext('2d',{alpha:false});
-  ctx.fillStyle='#fff'; ctx.fillRect(0,0,dest.width,dest.height);
-  ctx.drawImage(src,0,0,dest.width,dest.height);
-}
-
-/* ═══════════════════ BUILD ═══════════════════ */
-function buildEffect(e){
-  const root=document.getElementById('book-root');
-  root.innerHTML=''; _st={};
-  buildThumbs();
-
-  const{w:sw,h:sh}=stageWH();
-
-  if(e==='magazine'||e==='book') buildMagBook(e,sw,sh);
-  else if(e==='slider')     buildSlider(sw,sh);
-  else if(e==='coverflow')  buildCoverflow(sw,sh);
-  else if(e==='cards')      buildCards(sw,sh);
-  else if(e==='onepage')    buildOnePage(sw,sh);
-  else if(e==='album')      buildAlbum(sw,sh);
-  else if(e==='notebook')   buildNotebook(sw,sh);
-
-  updateUI();
-}
-
+/* ══ DESTROY ══ */
 function destroy(){
-  if(pf){try{pf.destroy()}catch(e){}; pf=null;}
-  blobURLs.forEach(u=>{ /* keep alive for re-use */ });
+  if(pf){try{pf.destroy()}catch(e){} pf=null;}
   document.getElementById('book-root').innerHTML='';
   _st={};
 }
 
-/* ══════════════════════════════════════════════
-   MAGAZINE / BOOK — StPageFlip loadFromImages
-   This is the EXACT same approach Heyzine uses.
-   ══════════════════════════════════════════════ */
-function buildMagBook(mode,sw,sh){
-  // Leave generous margins so the book looks centred
-  const avW=sw-60, avH=sh-40;
-  // Each page = half the spread width
-  const{w:pgW,h:pgH}=pgSize(Math.min(avW/2,500),avH);
+/* ══ BUILD ══ */
+function buildEffect(e){
+  destroy();
+  buildThumbs();
+  const sw = window.innerWidth  - 60;
+  const sh = window.innerHeight - 110;
+  if(e==='magazine'||e==='book') buildMagBook(e, sw, sh);
+  else if(e==='slider')    buildSlider(sw, sh);
+  else if(e==='coverflow') buildCoverflow(sw, sh);
+  else if(e==='cards')     buildCards(sw, sh);
+  else if(e==='onepage')   buildOnePage(sw, sh);
+  else if(e==='album')     buildAlbum(sw, sh);
+  else if(e==='notebook')  buildNotebook(sw, sh);
+  updateUI();
+}
 
-  const root=document.getElementById('book-root');
-  const cont=document.createElement('div');
-  cont.id='stpf-container';
+/* ══════════════════════════════════════════════
+   MAGAZINE / BOOK — StPageFlip + PNG blobs
+   Renders at BOOK_W × BOOK_H logical pixels.
+   StPageFlip sets the img width/height itself
+   using its `width` config option in CSS pixels.
+   Since our PNG is physW × physH but displayed
+   at logW × logH, it is retina-sharp.
+   ══════════════════════════════════════════════ */
+function buildMagBook(mode, sw, sh){
+  const root = document.getElementById('book-root');
+  const cont = document.createElement('div');
+  cont.id = 'stpf-book';
   root.appendChild(cont);
 
-  pf=new St.PageFlip(cont,{
-    width:pgW, height:pgH,
-    size:'fixed',
-    drawShadow:true,
-    flippingTime: mode==='book'?450:900,
-    usePortrait:false,
-    autoSize:true,
-    maxShadowOpacity: mode==='book'?0.38:0.72,
-    showCover:true,
-    mobileScrollSupport:false,
-    useMouseEvents:true,
-    swipeDistance:20,
-    clickEventForward:false,
-    startPage:cur,
+  // Tell StPageFlip to display each page at BOOK_W × BOOK_H CSS pixels
+  // Our blobs are BOOK_W*DPR × BOOK_H*DPR physical pixels → crystal clear
+  pf = new St.PageFlip(cont, {
+    width:  BOOK_W,
+    height: BOOK_H,
+    size: 'fixed',
+    drawShadow: true,
+    flippingTime: mode==='book' ? 450 : 850,
+    usePortrait: false,
+    autoSize: true,
+    maxShadowOpacity: mode==='book' ? 0.35 : 0.68,
+    showCover: true,
+    mobileScrollSupport: false,
+    useMouseEvents: true,
+    swipeDistance: 18,
+    clickEventForward: false,
+    startPage: cur,
   });
 
   pf.loadFromImages(blobURLs);
 
-  pf.on('flip',e=>{
-    cur=e.data; playFlip(); updateUI();
+  pf.on('flip', e => {
+    cur = e.data;
+    playFlip();
+    updateUI();
   });
-
-  _st={pgW,pgH};
 }
 
 /* ══════════════════════════════════════════════
-   SLIDER — plain horizontal translate
-   Heyzine's slider is a clean slide, no curl.
+   HELPER: make a crisp <canvas> element
+   showing page[idx] at given logical size.
+   We draw the stored rawPages[idx] (which is
+   already at DPR×logical resolution) scaled
+   down into a display canvas of logW×logH.
+   But we MUST set canvas.width to physW and
+   NOT set CSS width, so no blur.
    ══════════════════════════════════════════════ */
-function buildSlider(sw,sh){
-  const{w:pgW,h:pgH}=pgSize(Math.min(sw-60,780),sh-40);
-  const root=document.getElementById('book-root');
+function makeCanvas(pageIdx, logW, logH){
+  const src = rawPages[pageIdx];
+  if(!src) return document.createElement('canvas');
 
-  const vp=document.createElement('div');
-  vp.className='sl-vp';
-  vp.style.cssText=`width:${pgW}px;height:${pgH}px;
-    box-shadow:0 0 0 1px rgba(255,255,255,.04),
-               0 8px 32px rgba(0,0,0,.6),
-               0 40px 100px rgba(0,0,0,.7);
-    border-radius:3px;`;
+  const dpr = BOOK_DPR;
+  const physW = Math.round(logW * dpr);
+  const physH = Math.round(logH * dpr);
 
-  const tr=document.createElement('div');
-  tr.className='sl-tr';
-  tr.style.cssText=`width:${total*pgW}px;height:${pgH}px;
-    transition:transform .55s cubic-bezier(.4,0,.2,1);will-change:transform;`;
+  const c = document.createElement('canvas');
+  c.width  = physW;
+  c.height = physH;
+  // CSS size = logical size → exactly 1 CSS px = 1 physical px on retina
+  c.style.width  = logW + 'px';
+  c.style.height = logH + 'px';
+  c.style.display = 'block';
 
-  pages.forEach(src=>{
-    const pg=document.createElement('div');
-    pg.className='sl-pg';
-    pg.style.cssText=`width:${pgW}px;height:${pgH}px;flex-shrink:0;overflow:hidden;background:#fff;`;
-    const c=document.createElement('canvas');
-    stamp(src,c,pgW,pgH); pg.appendChild(c); tr.appendChild(pg);
-  });
+  const ctx = c.getContext('2d', {alpha: false});
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, physW, physH);
+  // Draw source (which is already at its own DPR scale) into our canvas
+  ctx.drawImage(src, 0, 0, physW, physH);
+  return c;
+}
+
+/* ══ SLIDER ══ */
+function buildSlider(sw, sh){
+  // Single page: use full stage width
+  let logW = Math.min(sw, rawPages[0]?._logW*2 || sw);
+  let logH = Math.round(logW * (BOOK_H/BOOK_W));
+  if(logH > sh){ logH = sh; logW = Math.round(logH * (BOOK_W/BOOK_H)); }
+  // clamp to reasonable max
+  logW = Math.min(logW, sw);
+  logH = Math.min(logH, sh);
+
+  const root = document.getElementById('book-root');
+  const vp = document.createElement('div');
+  vp.className = 'sl-vp';
+  vp.style.cssText = `width:${logW}px;height:${logH}px;border-radius:3px;
+    box-shadow:0 0 0 1px rgba(255,255,255,.05),0 8px 40px rgba(0,0,0,.65),0 50px 120px rgba(0,0,0,.75);`;
+
+  const tr = document.createElement('div');
+  tr.className = 'sl-tr';
+  tr.style.cssText = `width:${total*logW}px;height:${logH}px;
+    transition:transform .58s cubic-bezier(.4,0,.2,1);will-change:transform;`;
+
+  for(let i=0;i<total;i++){
+    const pg = document.createElement('div');
+    pg.style.cssText = `width:${logW}px;height:${logH}px;flex-shrink:0;overflow:hidden;background:#fff;`;
+    pg.appendChild(makeCanvas(i, logW, logH));
+    tr.appendChild(pg);
+  }
 
   vp.appendChild(tr); root.appendChild(vp);
-  _st={pgW,pgH,tr};
+  _st = {logW, logH, tr};
 
-  // Touch swipe
   let sx=0;
   vp.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
   vp.addEventListener('touchend',e=>{
     const dx=e.changedTouches[0].clientX-sx;
     if(dx<-30)goNext(); else if(dx>30)goPrev();
   });
-
   sliderGoTo(cur);
 }
-function sliderGoTo(i){
-  if(!_st.tr) return;
-  _st.tr.style.transform=`translateX(-${i*_st.pgW}px)`;
-}
+function sliderGoTo(i){ if(_st.tr) _st.tr.style.transform=`translateX(-${i*_st.logW}px)`; }
 
-/* ══════════════════════════════════════════════
-   COVERFLOW — 3D arc, real perspective per item
-   ══════════════════════════════════════════════ */
-function buildCoverflow(sw,sh){
-  const{w:pgW,h:pgH}=pgSize(Math.min(sw*0.42,420),sh-60);
+/* ══ COVERFLOW ══ */
+function buildCoverflow(sw, sh){
+  let logW = Math.min(Math.round(sw*0.4), 420);
+  let logH = Math.round(logW*(BOOK_H/BOOK_W));
+  if(logH>sh-60){logH=sh-60;logW=Math.round(logH*(BOOK_W/BOOK_H));}
+
   const root=document.getElementById('book-root');
-
   const stage=document.createElement('div');
   stage.className='cf-stage';
-  stage.style.cssText=`width:${Math.min(sw-40,1000)}px;height:${pgH}px;`;
-
-  _st={pgW,pgH,stage};
+  stage.style.cssText=`width:${Math.min(sw,1000)}px;height:${logH}px;`;
+  _st={logW,logH,stage};
 
   let sx=0;
   stage.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
@@ -606,63 +592,45 @@ function buildCoverflow(sw,sh){
     const dx=e.changedTouches[0].clientX-sx;
     if(dx<-30)goNext(); else if(dx>30)goPrev();
   });
-
   root.appendChild(stage);
   cfRender();
 }
-
 function cfRender(){
-  if(!_st.stage) return;
-  const{pgW,pgH,stage}=_st;
+  const{logW,logH,stage}=_st; if(!stage) return;
   stage.innerHTML='';
-
-  // Render 5 items: offsets -2,-1,0,+1,+2
   [-2,-1,0,1,2].forEach(off=>{
     const idx=cur+off;
     const item=document.createElement('div');
     item.className='cfi';
-
-    const aoff=Math.abs(off);
-    const sc  =off===0?1:1-aoff*.1;
-    const rotY=off===0?0:off>0?-50:50;
-    const tx  =off*pgW*.72;
-    const zi  =off===0?10:10-aoff*2;
-    const op  =aoff>1?.42:aoff===1?.75:1;
-    const sh2 =off===0?`0 0 0 1px rgba(255,255,255,.06),0 30px 80px rgba(0,0,0,.9)`
-                      :`0 10px 40px rgba(0,0,0,.6)`;
-
-    item.style.cssText=`
-      width:${pgW}px;height:${pgH}px;
+    const ao=Math.abs(off);
+    const sc=off===0?1:1-ao*.1;
+    const rotY=off===0?0:off>0?-52:52;
+    const tx=off*logW*.68;
+    const zi=off===0?10:10-ao*2;
+    const op=ao>1?.38:ao===1?.72:1;
+    item.style.cssText=`width:${logW}px;height:${logH}px;
       transform:translateX(${tx}px) rotateY(${rotY}deg) scale(${sc});
-      z-index:${zi};opacity:${op};box-shadow:${sh2};`;
-
+      z-index:${zi};opacity:${op};
+      box-shadow:${off===0?'0 0 0 1px rgba(255,255,255,.06),0 30px 90px rgba(0,0,0,.9)':'0 10px 40px rgba(0,0,0,.65)'};`;
     if(idx>=0&&idx<total){
-      const c=document.createElement('canvas');
-      stamp(pages[idx],c,pgW,pgH);
-      item.appendChild(c);
-      if(off!==0){
-        item.onclick=()=>{const p=cur;cur=idx;playFlip();cfRender();updateUI();};
-      }
-    } else {
-      item.style.background='#13131a';
-    }
+      item.appendChild(makeCanvas(idx,logW,logH));
+      if(off!==0){ item.onclick=()=>{const p=cur;cur=idx;playFlip();cfRender();updateUI();}; }
+    } else { item.style.background='#13131a'; }
     stage.appendChild(item);
   });
 }
 
-/* ══════════════════════════════════════════════
-   CARDS — stacked, flip-away on turn
-   ══════════════════════════════════════════════ */
-function buildCards(sw,sh){
-  const{w:pgW,h:pgH}=pgSize(Math.min(sw*.58,520),sh-80);
-  const root=document.getElementById('book-root');
+/* ══ CARDS ══ */
+function buildCards(sw, sh){
+  let logW=Math.min(Math.round(sw*.55),540);
+  let logH=Math.round(logW*(BOOK_H/BOOK_W));
+  if(logH>sh-80){logH=sh-80;logW=Math.round(logH*(BOOK_W/BOOK_H));}
 
+  const root=document.getElementById('book-root');
   const stage=document.createElement('div');
   stage.className='cd-stage';
-  stage.style.cssText=`width:${pgW}px;height:${pgH+28}px;perspective:1000px;`;
-
-  _st={pgW,pgH,stage};
-  root.appendChild(stage);
+  stage.style.cssText=`width:${logW}px;height:${logH+28}px;perspective:1000px;`;
+  _st={logW,logH,stage};
 
   let sx=0;
   stage.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
@@ -670,72 +638,53 @@ function buildCards(sw,sh){
     const dx=e.changedTouches[0].clientX-sx;
     if(dx<-30)goNext(); else if(dx>30)goPrev();
   });
-
+  root.appendChild(stage);
   cardsRender();
 }
-
 function cardsRender(){
-  if(!_st.stage) return;
-  const{pgW,pgH,stage}=_st;
+  const{logW,logH,stage}=_st; if(!stage) return;
   stage.innerHTML='';
-
-  // Stack bottom-to-top: indices behind current
-  const stack=[2,1,0];
-  stack.forEach(behind=>{
+  [2,1,0].forEach(behind=>{
     const idx=Math.max(0,cur-behind);
     const card=document.createElement('div');
     card.className='cd-item';
     const sc=1-behind*.033;
     const ty=behind*9;
-    card.style.cssText=`
-      width:${pgW}px;height:${pgH}px;
-      transform:scale(${sc}) translateY(${ty}px);
-      transform-origin:center bottom;
-      z-index:${10-behind};
-      box-shadow:
-        0 ${4+behind*3}px ${20+behind*12}px rgba(0,0,0,${.55+behind*.08}),
-        0 1px 3px rgba(0,0,0,.5);
-      border-radius:6px;
-    `;
-    const c=document.createElement('canvas');
-    stamp(pages[idx]||pages[0],c,pgW,pgH);
-    card.appendChild(c); stage.appendChild(card);
+    card.style.cssText=`width:${logW}px;height:${logH}px;
+      transform:scale(${sc}) translateY(${ty}px);transform-origin:center bottom;
+      z-index:${10-behind};border-radius:6px;
+      box-shadow:0 ${4+behind*3}px ${20+behind*14}px rgba(0,0,0,${.55+behind*.1}),0 1px 3px rgba(0,0,0,.5);`;
+    card.appendChild(makeCanvas(idx,logW,logH));
+    stage.appendChild(card);
   });
 }
-
 function cardsFlip(dir){
-  if(!_st.stage||busy) return;
+  const{stage}=_st; if(!stage||busy) return;
   busy=true;
-  const top=_st.stage.lastElementChild;
-  if(!top){busy=false;return;}
-  const angle=dir==='next'?-170:170;
-  top.style.transition='transform .48s cubic-bezier(.645,.045,.355,1),opacity .38s ease';
+  const top=stage.lastElementChild; if(!top){busy=false;return;}
+  const angle=dir==='next'?-172:172;
+  top.style.transition='transform .5s cubic-bezier(.645,.045,.355,1),opacity .4s ease';
   top.style.transformOrigin='center bottom';
-  top.style.transform=`perspective(900px) rotateX(${angle}deg) scale(.88)`;
+  top.style.transform=`perspective(900px) rotateX(${angle}deg) scale(.87)`;
   top.style.opacity='0';
-  setTimeout(()=>{cardsRender();busy=false;},480);
+  setTimeout(()=>{cardsRender();busy=false;},500);
 }
 
-/* ══════════════════════════════════════════════
-   ONE PAGE — zoom + fade transition
-   ══════════════════════════════════════════════ */
-function buildOnePage(sw,sh){
-  const{w:pgW,h:pgH}=pgSize(Math.min(sw-60,680),sh-50);
-  const root=document.getElementById('book-root');
+/* ══ ONE PAGE ══ */
+function buildOnePage(sw, sh){
+  let logW=Math.min(sw, rawPages[0]?._logW*2||sw, sw);
+  let logH=Math.round(logW*(BOOK_H/BOOK_W));
+  if(logH>sh){logH=sh;logW=Math.round(logH*(BOOK_W/BOOK_H));}
+  logW=Math.min(logW,sw);
 
+  const root=document.getElementById('book-root');
   const wrap=document.createElement('div');
   wrap.className='op-wrap';
-  wrap.style.cssText=`
-    width:${pgW}px;height:${pgH}px;
-    box-shadow:
-      0 0 0 1px rgba(255,255,255,.05),
-      0 8px 30px rgba(0,0,0,.6),
-      0 40px 100px rgba(0,0,0,.75);
-  `;
-  const c=document.createElement('canvas');
-  stamp(pages[0],c,pgW,pgH); wrap.appendChild(c);
+  wrap.style.cssText=`width:${logW}px;height:${logH}px;
+    box-shadow:0 0 0 1px rgba(255,255,255,.05),0 8px 36px rgba(0,0,0,.65),0 50px 120px rgba(0,0,0,.8);`;
+  wrap.appendChild(makeCanvas(0,logW,logH));
   root.appendChild(wrap);
-  _st={pgW,pgH,wrap};
+  _st={logW,logH,wrap};
 
   let sx=0;
   wrap.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
@@ -744,55 +693,45 @@ function buildOnePage(sw,sh){
     if(dx<-30)goNext(); else if(dx>30)goPrev();
   });
 }
-
 function opFlip(){
-  if(!_st.wrap||busy) return;
+  const{logW,logH,wrap}=_st; if(!wrap||busy) return;
   busy=true;
-  const{pgW,pgH,wrap}=_st;
-  wrap.style.transition='opacity .22s ease,transform .22s ease';
-  wrap.style.opacity='0'; wrap.style.transform='scale(1.04)';
+  wrap.style.transition='opacity .2s ease,transform .2s ease';
+  wrap.style.opacity='0'; wrap.style.transform='scale(1.038)';
   setTimeout(()=>{
     wrap.innerHTML='';
-    const c=document.createElement('canvas');
-    stamp(pages[cur]||pages[0],c,pgW,pgH); wrap.appendChild(c);
-    wrap.style.transition='none'; wrap.style.opacity='0'; wrap.style.transform='scale(.97)';
+    wrap.appendChild(makeCanvas(cur,logW,logH));
+    wrap.style.transition='none'; wrap.style.opacity='0'; wrap.style.transform='scale(.965)';
     requestAnimationFrame(()=>{
-      wrap.style.transition='opacity .3s ease,transform .3s ease';
+      wrap.style.transition='opacity .28s ease,transform .28s ease';
       wrap.style.opacity='1'; wrap.style.transform='scale(1)';
-      setTimeout(()=>busy=false,310);
+      setTimeout(()=>busy=false,300);
     });
-  },225);
+  },210);
 }
 
-/* ══════════════════════════════════════════════
-   ALBUM — top-bound, rotateX flip from top edge
-   ══════════════════════════════════════════════ */
-function buildAlbum(sw,sh){
-  const{w:pgW,h:pgH}=pgSize(Math.min(sw-60,820),sh-80);
-  const root=document.getElementById('book-root');
+/* ══ ALBUM ══ */
+function buildAlbum(sw, sh){
+  let logW=Math.min(sw, 900); let logH=Math.round(logW*(BOOK_H/BOOK_W));
+  if(logH>sh-60){logH=sh-60;logW=Math.round(logH*(BOOK_W/BOOK_H));}
 
+  const root=document.getElementById('book-root');
   const outer=document.createElement('div');
   outer.className='alb-outer';
-  outer.style.cssText=`width:${pgW}px;height:${pgH+14}px;`;
+  outer.style.cssText=`width:${logW}px;height:${logH+14}px;`;
 
-  // Rings
-  const rings=document.createElement('div');
-  rings.className='alb-rings';
-  for(let i=0;i<12;i++){
-    const r=document.createElement('div');
-    r.className='alb-ring'; rings.appendChild(r);
-  }
+  const rings=document.createElement('div'); rings.className='alb-rings';
+  for(let i=0;i<12;i++){const r=document.createElement('div');r.className='alb-ring';rings.appendChild(r);}
 
   const pg=document.createElement('div');
   pg.className='alb-pg';
-  pg.style.cssText=`width:${pgW}px;height:${pgH}px;
-    box-shadow:0 0 0 1px rgba(255,255,255,.05),0 20px 60px rgba(0,0,0,.7),0 4px 12px rgba(0,0,0,.5);`;
-  const c=document.createElement('canvas');
-  stamp(pages[0],c,pgW,pgH); pg.appendChild(c);
+  pg.style.cssText=`width:${logW}px;height:${logH}px;
+    box-shadow:0 0 0 1px rgba(255,255,255,.05),0 20px 60px rgba(0,0,0,.75),0 4px 12px rgba(0,0,0,.5);`;
+  pg.appendChild(makeCanvas(0,logW,logH));
 
   outer.appendChild(rings); outer.appendChild(pg);
   root.appendChild(outer);
-  _st={pgW,pgH,pg};
+  _st={logW,logH,pg};
 
   let sx=0;
   outer.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
@@ -801,58 +740,43 @@ function buildAlbum(sw,sh){
     if(dx<-30)goNext(); else if(dx>30)goPrev();
   });
 }
-
-function albumFlip(dir){
-  if(!_st.pg||busy) return;
+function albumFlip(){
+  const{logW,logH,pg}=_st; if(!pg||busy) return;
   busy=true;
-  const{pgW,pgH,pg}=_st;
   pg.style.transition='transform .52s cubic-bezier(.645,.045,.355,1),opacity .28s ease';
   pg.style.transformOrigin='center top';
   pg.style.transform='perspective(1400px) rotateX(-185deg)';
   pg.style.opacity='0';
   setTimeout(()=>{
-    pg.innerHTML='';
-    const c=document.createElement('canvas');
-    stamp(pages[cur]||pages[0],c,pgW,pgH); pg.appendChild(c);
-    pg.style.transition='none';
-    pg.style.transform='perspective(1400px) rotateX(185deg)';
-    pg.style.opacity='0';
+    pg.innerHTML=''; pg.appendChild(makeCanvas(cur,logW,logH));
+    pg.style.transition='none'; pg.style.transform='perspective(1400px) rotateX(185deg)'; pg.style.opacity='0';
     requestAnimationFrame(()=>{
       pg.style.transition='transform .52s cubic-bezier(.645,.045,.355,1),opacity .22s ease';
-      pg.style.transform='perspective(1400px) rotateX(0deg)';
-      pg.style.opacity='1';
-      setTimeout(()=>busy=false,540);
+      pg.style.transform='perspective(1400px) rotateX(0deg)'; pg.style.opacity='1';
+      setTimeout(()=>busy=false,550);
     });
-  },280);
+  },290);
 }
 
-/* ══════════════════════════════════════════════
-   NOTEBOOK — spiral left, pages slide sideways
-   ══════════════════════════════════════════════ */
-function buildNotebook(sw,sh){
-  const{w:pgW,h:pgH}=pgSize(Math.min(sw-120,620),sh-60);
+/* ══ NOTEBOOK ══ */
+function buildNotebook(sw, sh){
+  let logW=Math.min(Math.round(sw*.65),680);
+  let logH=Math.round(logW*(BOOK_H/BOOK_W));
+  if(logH>sh-40){logH=sh-40;logW=Math.round(logH*(BOOK_W/BOOK_H));}
+
   const root=document.getElementById('book-root');
-
-  const outer=document.createElement('div');
-  outer.className='nb-outer';
-
-  const rings=document.createElement('div');
-  rings.className='nb-rings';
-  rings.style.height=pgH+'px';
-  for(let i=0;i<13;i++){
-    const r=document.createElement('div'); r.className='nb-ring'; rings.appendChild(r);
-  }
+  const outer=document.createElement('div'); outer.className='nb-outer';
+  const rings=document.createElement('div'); rings.className='nb-rings'; rings.style.height=logH+'px';
+  for(let i=0;i<14;i++){const r=document.createElement('div');r.className='nb-ring';rings.appendChild(r);}
 
   const pg=document.createElement('div');
   pg.className='nb-pg';
-  pg.style.cssText=`width:${pgW}px;height:${pgH}px;
-    box-shadow:4px 0 24px rgba(0,0,0,.5),0 30px 80px rgba(0,0,0,.65);`;
-  const c=document.createElement('canvas');
-  stamp(pages[0],c,pgW,pgH); pg.appendChild(c);
+  pg.style.cssText=`width:${logW}px;height:${logH}px;
+    box-shadow:4px 0 24px rgba(0,0,0,.55),0 30px 80px rgba(0,0,0,.7);`;
+  pg.appendChild(makeCanvas(0,logW,logH));
 
-  outer.appendChild(rings); outer.appendChild(pg);
-  root.appendChild(outer);
-  _st={pgW,pgH,pg};
+  outer.appendChild(rings); outer.appendChild(pg); root.appendChild(outer);
+  _st={logW,logH,pg};
 
   let sx=0;
   outer.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
@@ -861,78 +785,61 @@ function buildNotebook(sw,sh){
     if(dx<-30)goNext(); else if(dx>30)goPrev();
   });
 }
-
 function nbFlip(dir){
-  if(!_st.pg||busy) return;
+  const{logW,logH,pg}=_st; if(!pg||busy) return;
   busy=true;
-  const{pgW,pgH,pg}=_st;
-  const out=dir==='next'?'-50px':'50px';
-  const inn=dir==='next'?' 50px':'-50px';
+  const out=dir==='next'?'-55px':'55px'; const inn=dir==='next'?'55px':'-55px';
   pg.style.transition='transform .3s ease,opacity .28s ease';
   pg.style.transform=`translateX(${out})`; pg.style.opacity='0';
   setTimeout(()=>{
-    pg.innerHTML='';
-    const c=document.createElement('canvas');
-    stamp(pages[cur]||pages[0],c,pgW,pgH); pg.appendChild(c);
-    pg.style.transition='none';
-    pg.style.transform=`translateX(${inn})`; pg.style.opacity='0';
+    pg.innerHTML=''; pg.appendChild(makeCanvas(cur,logW,logH));
+    pg.style.transition='none'; pg.style.transform=`translateX(${inn})`; pg.style.opacity='0';
     requestAnimationFrame(()=>{
-      pg.style.transition='transform .35s cubic-bezier(.4,0,.2,1),opacity .3s ease';
+      pg.style.transition='transform .36s cubic-bezier(.4,0,.2,1),opacity .3s ease';
       pg.style.transform='translateX(0)'; pg.style.opacity='1';
-      setTimeout(()=>busy=false,360);
+      setTimeout(()=>busy=false,370);
     });
-  },300);
+  },305);
 }
 
-/* ═══════════════════ NAVIGATION ═══════════════════ */
+/* ══ NAVIGATION ══ */
 document.addEventListener('keydown',e=>{
   if(document.getElementById('sv').style.display!=='none'){
-    if(e.key==='ArrowRight'||e.key==='ArrowDown')goNext();
-    if(e.key==='ArrowLeft' ||e.key==='ArrowUp')  goPrev();
+    if(e.key==='ArrowRight'||e.key==='ArrowDown') goNext();
+    if(e.key==='ArrowLeft' ||e.key==='ArrowUp')   goPrev();
   }
 });
 
 function goNext(){
   if(busy) return;
-  if(effect==='magazine'||effect==='book'){
-    if(pf) pf.flipNext('bottom');
-    return;
-  }
+  if(effect==='magazine'||effect==='book'){ if(pf) pf.flipNext('bottom'); return; }
   if(cur>=total-1) return;
   const p=cur; cur++;
   playFlip(); doFlip(p,cur,'next');
 }
-
 function goPrev(){
   if(busy) return;
-  if(effect==='magazine'||effect==='book'){
-    if(pf) pf.flipPrev('bottom');
-    return;
-  }
+  if(effect==='magazine'||effect==='book'){ if(pf) pf.flipPrev('bottom'); return; }
   if(cur<=0) return;
   const p=cur; cur--;
   playFlip(); doFlip(p,cur,'prev');
 }
-
 function doFlip(from,to,dir){
   if(effect==='slider')    sliderGoTo(to);
   else if(effect==='coverflow') cfRender();
   else if(effect==='cards')    cardsFlip(dir);
   else if(effect==='onepage')  opFlip();
-  else if(effect==='album')    albumFlip(dir);
+  else if(effect==='album')    albumFlip();
   else if(effect==='notebook') nbFlip(dir);
   updateUI();
 }
-
 function jumpTo(idx){
-  if(effect==='magazine'||effect==='book'){
-    if(pf){pf.flip(idx);return;}
-  }
+  if(effect==='magazine'||effect==='book'){ if(pf){pf.flip(idx);return;} }
   const p=cur; cur=idx;
   playFlip(); doFlip(p,cur,cur>p?'next':'prev'); updateUI();
 }
 
-/* ═══════════════════ UI ═══════════════════ */
+/* ══ UI ══ */
 function updateUI(){
   document.getElementById('pn').textContent=`Page ${cur+1} of ${total}`;
   document.getElementById('ap').classList.toggle('off',cur<=0);
@@ -942,15 +849,13 @@ function updateUI(){
     if(i===cur) t.scrollIntoView({behavior:'smooth',inline:'nearest',block:'nearest'});
   });
 }
-
 function buildThumbs(){
-  const strip=document.getElementById('ts');
-  strip.innerHTML='';
+  const strip=document.getElementById('ts'); strip.innerHTML='';
   thumbs.forEach((tc,i)=>{
     const wrap=document.createElement('div');
     wrap.className='th'+(i===0?' cur':'');
     const c=document.createElement('canvas');
-    c.width=tc.width;c.height=tc.height;
+    c.width=tc.width; c.height=tc.height;
     c.getContext('2d').drawImage(tc,0,0);
     wrap.appendChild(c);
     wrap.onclick=()=>jumpTo(i);
@@ -958,16 +863,15 @@ function buildThumbs(){
   });
 }
 
-/* ═══════════════════ HOME ═══════════════════ */
+/* ══ HOME ══ */
 function goHome(){
   destroy();
   document.getElementById('sv').style.display='none';
   document.getElementById('ss').style.display='none';
   document.getElementById('su').style.display='flex';
-  pages=[];thumbs=[];total=0;cur=0;busy=false;
-  blobURLs.forEach(u=>URL.revokeObjectURL(u)); blobURLs=[];
-  fiel.value='';
-  window.scrollTo(0,0);
+  blobURLs.forEach(u=>URL.revokeObjectURL(u));
+  rawPages=[];blobURLs=[];thumbs=[];cur=0;total=0;busy=false;
+  fiel.value=''; window.scrollTo(0,0);
 }
 </script>
 </body>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SquareZix – Company Profile 2027</title>
+  <title>SquareZix – Company Profile</title>
   <link rel="icon" href="https://squarezix.com/wp-content/uploads/2024/05/cropped-SZ-Logo-270x270.png">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script src="https://unpkg.com/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
@@ -139,7 +139,8 @@
     }
 
     .vbar {
-      height: 46px;
+      height: auto;
+      min-height: 46px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -163,7 +164,8 @@
       display: flex;
       align-items: center;
       gap: .25rem;
-      flex-wrap: wrap
+      flex-wrap: wrap;
+      padding: .35rem 0
     }
 
     .pn {
@@ -267,9 +269,6 @@
     }
 
     .snd.on {
-      /* background: var(--adim);
-      border-color: var(--accent);
-      color: var(--accentl) */
       color: #fff !important;
       border: none;
       border-radius: 0.375em;
@@ -559,6 +558,105 @@
       font-size: .72rem;
       color: var(--accentl)
     }
+
+    /* ── MOBILE RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav {
+        padding: 0 .8rem;
+        height: 48px;
+      }
+
+      .logo-txt {
+        font-size: .78rem;
+      }
+
+      .nav-tag {
+        font-size: .54rem;
+        padding: .15rem .35rem;
+        letter-spacing: .1em;
+      }
+
+      .vbar {
+        top: 48px;
+        padding: .3rem .5rem;
+        gap: .2rem;
+      }
+
+      /* Hide less-used effect buttons on mobile; keep core ones */
+      .vt[data-v="notebook"],
+      .vt[data-v="coverflow"],
+      .vt[data-v="cards"],
+      .vt[data-v="album"] {
+        display: none;
+      }
+
+      .vbr {
+        gap: .2rem;
+        padding: .25rem 0;
+      }
+
+      .vt {
+        padding: .22rem .42rem;
+        font-size: .56rem;
+      }
+
+      .pn {
+        font-size: .62rem;
+        min-width: 60px;
+      }
+
+      .zb {
+        width: 24px;
+        height: 22px;
+        font-size: .85rem;
+      }
+
+      .z-val {
+        font-size: .56rem;
+        min-width: 28px;
+      }
+
+      .snd {
+        font-size: .56rem;
+        padding: .22rem .42rem;
+      }
+
+      /* Stage: account for smaller nav (48px) + taller toolbar */
+      .stage {
+        height: calc(100dvh - 48px - 60px - 52px);
+        min-height: 200px;
+      }
+
+      /* Arrows: smaller and closer to edge */
+      .arr {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+      }
+
+      #arr-p { left: .35rem; }
+      #arr-n { right: .35rem; }
+
+      /* Thumbnail strip: smaller thumbs */
+      .ts {
+        padding: .35rem .5rem;
+      }
+
+      .thumb {
+        width: 28px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .vt[data-v="book"],
+      .vt[data-v="slider"] {
+        display: none;
+      }
+
+      .nav-tag {
+        display: none;
+      }
+    }
   </style>
 </head>
 
@@ -623,9 +721,9 @@
 
     /* STATE */
     let pdfDoc, total, DPR;
-    let cache = [];   // cache[i] = full-res canvas for page i
-    let thumbs = [];  // thumbs[i] = tiny canvas for strip
-    let pgW, pgH;     // logical page size in CSS px
+    let cache = [];
+    let thumbs = [];
+    let pgW, pgH;
     let zoomLvl = 1.0, effect = 'magazine', cur = 0, pf = null, busy = false, _st = {};
     let soundOn = true;
 
@@ -642,7 +740,7 @@
     }
     function toggleSnd() { soundOn = !soundOn; document.getElementById('snd').classList.toggle('on', soundOn); document.getElementById('sico').textContent = soundOn ? '🔊' : '🔇'; }
 
-    /* ZOOM — CSS scale only; canvas pixels are already at DPR so scaling up stays sharp */
+    /* ZOOM */
     function zoom(dir) {
       zoomLvl = Math.max(0.4, Math.min(2.5, Math.round((zoomLvl + dir * 0.1) * 10) / 10));
       document.getElementById('zval').textContent = Math.round(zoomLvl * 100) + '%';
@@ -657,7 +755,12 @@
       if (e.key === '-') zoom(-1);
     });
 
-   
+    /* Helper: get stage dimensions accounting for actual rendered size */
+    function getStageSize() {
+      const el = document.getElementById('stage');
+      return { w: el.clientWidth, h: el.clientHeight };
+    }
+
     window.addEventListener('load', async () => {
       const setP = (p, msg) => { document.getElementById('ldf').style.width = p + '%'; document.getElementById('ldt').textContent = msg; };
       try {
@@ -671,7 +774,6 @@
         total = pdfDoc.numPages;
         DPR = Math.min(window.devicePixelRatio || 1, 3);
 
-        // Measure page dimensions from page 1
         const vp0 = (await pdfDoc.getPage(1)).getViewport({ scale: 1 });
         const asp = vp0.height / vp0.width;
         const stW = window.innerWidth - 100, stH = window.innerHeight - 120;
@@ -682,11 +784,9 @@
         const physW = Math.round(pgW * DPR), physH = Math.round(pgH * DPR);
         const scale = physW / vp0.width;
 
-        // Render all pages
         for (let i = 0; i < total; i++) {
           const pg = await pdfDoc.getPage(i + 1);
 
-          // Full-res canvas (used for display + zoom)
           const vp = pg.getViewport({ scale });
           const c = document.createElement('canvas');
           c.width = physW; c.height = physH;
@@ -695,7 +795,6 @@
           await pg.render({ canvasContext: ctx, viewport: vp }).promise;
           cache[i] = c;
 
-          // Tiny thumbnail canvas for strip
           const tvp = pg.getViewport({ scale: 0.15 });
           const tc = document.createElement('canvas');
           tc.width = tvp.width; tc.height = tvp.height;
@@ -720,12 +819,17 @@
       }
     });
 
-    
+    /* Redraw on resize */
+    let _resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(_resizeTimer);
+      _resizeTimer = setTimeout(() => { build(effect); }, 220);
+    });
+
     function pageCanvas(i, w, h) {
       const wrap = document.createElement('div');
       wrap.style.cssText = `width:${w}px;height:${h}px;overflow:hidden;background:#fff;flex-shrink:0`;
       const c = document.createElement('canvas');
-      // Render at DPR × display size — stays sharp at any CSS zoom
       c.width = Math.round(w * DPR);
       c.height = Math.round(h * DPR);
       c.style.cssText = `width:${w}px;height:${h}px;display:block`;
@@ -739,14 +843,14 @@
     function destroy() { if (pf) { try { pf.destroy(); } catch (e) { } pf = null; } document.getElementById('book-root').innerHTML = ''; busy = false; _st = {}; }
     function build(e) {
       destroy();
-      const r = document.getElementById('stage').getBoundingClientRect();
-      if (e === 'magazine' || e === 'book') buildMagBook(e, r.width, r.height);
-      else if (e === 'slider') buildSlider(r.width, r.height);
-      else if (e === 'coverflow') buildCoverflow(r.width, r.height);
-      else if (e === 'cards') buildCards(r.width, r.height);
-      else if (e === 'onepage') buildOnePage(r.width, r.height);
-      else if (e === 'album') buildAlbum(r.width, r.height);
-      else if (e === 'notebook') buildNotebook(r.width, r.height);
+      const { w, h } = getStageSize();
+      if (e === 'magazine' || e === 'book') buildMagBook(e, w, h);
+      else if (e === 'slider') buildSlider(w, h);
+      else if (e === 'coverflow') buildCoverflow(w, h);
+      else if (e === 'cards') buildCards(w, h);
+      else if (e === 'onepage') buildOnePage(w, h);
+      else if (e === 'album') buildAlbum(w, h);
+      else if (e === 'notebook') buildNotebook(w, h);
       updateUI();
     }
     function swFx(btn) { effect = btn.dataset.v; syncTabs(effect); build(effect); }
@@ -754,10 +858,21 @@
 
     /* MAGAZINE / BOOK */
     function buildMagBook(mode, stW, stH) {
+      const isMobile = window.innerWidth <= 640;
       const root = document.getElementById('book-root');
       const asp = pgH / pgW;
-      let w = Math.min(Math.floor((stW - 80) / 2), pgW);
-      let h = Math.round(w * asp); if (h > stH - 20) { h = stH - 20; w = Math.round(h / asp); }
+
+      let w, h;
+      if (isMobile) {
+        // On mobile show single page (full width)
+        w = Math.min(stW - 40, pgW);
+        h = Math.round(w * asp);
+        if (h > stH - 20) { h = stH - 20; w = Math.round(h / asp); }
+      } else {
+        w = Math.min(Math.floor((stW - 80) / 2), pgW);
+        h = Math.round(w * asp);
+        if (h > stH - 20) { h = stH - 20; w = Math.round(h / asp); }
+      }
 
       const host = document.createElement('div'); host.id = 'spf-host'; root.appendChild(host);
       const divs = [];
@@ -766,7 +881,6 @@
         d.className = 'page';
         d.style.cssText = `width:${w}px;height:${h}px;overflow:hidden;background:#fff`;
         if (i === 0 || i === total - 1) d.dataset.density = 'hard';
-        // All pages pre-rendered — inject canvas immediately, no lazy loading
         const c = document.createElement('canvas');
         c.width = Math.round(w * DPR); c.height = Math.round(h * DPR);
         c.style.cssText = `width:${w}px;height:${h}px;display:block`;
@@ -776,7 +890,7 @@
       pf = new St.PageFlip(host, {
         width: w, height: h, size: 'fixed', drawShadow: true,
         flippingTime: mode === 'book' ? 440 : 860,
-        usePortrait: false, autoSize: true,
+        usePortrait: isMobile, autoSize: true,
         maxShadowOpacity: mode === 'book' ? 0.30 : 0.72,
         showCover: true, mobileScrollSupport: false,
         useMouseEvents: true, swipeDistance: 16, clickEventForward: false, startPage: cur,
@@ -789,7 +903,7 @@
 
     /* SLIDER */
     function buildSlider(stW, stH) {
-      const asp = pgH / pgW; let w = stW - 80, h = Math.round(w * asp); if (h > stH - 20) { h = stH - 20; w = Math.round(h / asp); }
+      const asp = pgH / pgW; let w = stW - 40, h = Math.round(w * asp); if (h > stH - 20) { h = stH - 20; w = Math.round(h / asp); }
       const root = document.getElementById('book-root');
       const clip = document.createElement('div'); clip.className = 'sl-clip';
       clip.style.cssText = `width:${w}px;height:${h}px;box-shadow:0 14px 50px rgba(0,0,0,.75),0 60px 130px rgba(0,0,0,.8)`;
@@ -803,15 +917,20 @@
 
     /* COVERFLOW */
     function buildCoverflow(stW, stH) {
-      const asp = pgH / pgW; let w = Math.min(Math.round((stW - 80) * .38), 440), h = Math.round(w * asp); if (h > stH - 40) { h = stH - 40; w = Math.round(h / asp); }
+      const asp = pgH / pgW;
+      const isMobile = window.innerWidth <= 640;
+      let w = Math.min(Math.round((stW - 40) * (isMobile ? .7 : .38)), isMobile ? 320 : 440);
+      let h = Math.round(w * asp); if (h > stH - 40) { h = stH - 40; w = Math.round(h / asp); }
       const root = document.getElementById('book-root');
       const wrap = document.createElement('div'); wrap.className = 'cf-wrap';
-      wrap.style.cssText = `width:${stW - 40}px;height:${h}px`;
+      wrap.style.cssText = `width:${stW - 20}px;height:${h}px`;
       _st = { w, h, wrap }; root.appendChild(wrap); addSwipe(wrap); cfRender();
     }
     function cfRender() {
       const { w, h, wrap } = _st; if (!wrap) return; wrap.innerHTML = '';
-      [-2, -1, 0, 1, 2].forEach(off => {
+      const isMobile = window.innerWidth <= 640;
+      const offsets = isMobile ? [-1, 0, 1] : [-2, -1, 0, 1, 2];
+      offsets.forEach(off => {
         const idx = cur + off; if (idx < 0 || idx >= total) return;
         const item = document.createElement('div'); item.className = 'cf-item';
         const ao = Math.abs(off), sc = off === 0 ? 1 : 1 - ao * .1, ry = off === 0 ? 0 : off > 0 ? -52 : 52, tx = off * w * .7;
@@ -824,7 +943,10 @@
 
     /* CARDS */
     function buildCards(stW, stH) {
-      const asp = pgH / pgW; let w = Math.min(Math.round((stW - 80) * .58), 580), h = Math.min(Math.round(w * asp), stH - 80); w = Math.round(h / asp);
+      const asp = pgH / pgW;
+      const isMobile = window.innerWidth <= 640;
+      let w = Math.min(Math.round((stW - 40) * (isMobile ? .88 : .58)), isMobile ? 400 : 580);
+      let h = Math.min(Math.round(w * asp), stH - 60); w = Math.round(h / asp);
       const root = document.getElementById('book-root');
       const stage = document.createElement('div'); stage.className = 'cards-wrap';
       stage.style.cssText = `width:${w}px;height:${h + 32}px;perspective:1000px`;
@@ -851,7 +973,7 @@
 
     /* ONE PAGE */
     function buildOnePage(stW, stH) {
-      const asp = pgH / pgW; let w = stW - 80, h = Math.round(w * asp); if (h > stH - 20) { h = stH - 20; w = Math.round(h / asp); }
+      const asp = pgH / pgW; let w = stW - 40, h = Math.round(w * asp); if (h > stH - 20) { h = stH - 20; w = Math.round(h / asp); }
       const root = document.getElementById('book-root');
       const wrap = document.createElement('div'); wrap.className = 'sp-wrap';
       wrap.style.cssText = `width:${w}px;height:${h}px;box-shadow:0 10px 40px rgba(0,0,0,.7),0 60px 130px rgba(0,0,0,.85)`;
@@ -875,7 +997,7 @@
 
     /* ALBUM */
     function buildAlbum(stW, stH) {
-      const asp = pgH / pgW; let w = stW - 60, h = Math.round(w * asp); if (h > stH - 60) { h = stH - 60; w = Math.round(h / asp); }
+      const asp = pgH / pgW; let w = stW - 40, h = Math.round(w * asp); if (h > stH - 60) { h = stH - 60; w = Math.round(h / asp); }
       const root = document.getElementById('book-root');
       const outer = document.createElement('div'); outer.className = 'alb-outer'; outer.style.cssText = `width:${w}px;height:${h + 14}px`;
       const coils = document.createElement('div'); coils.className = 'alb-coils';
@@ -904,7 +1026,10 @@
 
     /* NOTEBOOK */
     function buildNotebook(stW, stH) {
-      const asp = pgH / pgW; let w = Math.min(Math.round((stW - 80) * .68), 720), h = Math.min(Math.round(w * asp), stH - 40); w = Math.round(h / asp);
+      const asp = pgH / pgW;
+      const isMobile = window.innerWidth <= 640;
+      let w = Math.min(Math.round((stW - 40) * (isMobile ? .9 : .68)), isMobile ? 400 : 720);
+      let h = Math.min(Math.round(w * asp), stH - 40); w = Math.round(h / asp);
       const root = document.getElementById('book-root');
       const outer = document.createElement('div'); outer.className = 'nb-outer';
       const rings = document.createElement('div'); rings.className = 'nb-rings'; rings.style.height = h + 'px';

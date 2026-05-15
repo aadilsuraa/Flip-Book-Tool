@@ -730,7 +730,7 @@
 
     /* SOUND */
     const SND = {};
-    ['sm', 'md', 'lg'].forEach(k => { const a = new Audio(`https://cdnc.heyzine.com/flipbook/snd/flip-ct-${k}.mp3`); a.preload = 'auto'; SND[k] = a; });
+    ['sm', 'md', 'lg'].forEach(k => { const a = new Audio(`/flip-sound.mp3`); a.preload = 'auto'; SND[k] = a; });
     let _ft = 0;
     function onFlipStart() { _ft = performance.now(); }
     function playFlip() {

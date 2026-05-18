@@ -23,14 +23,9 @@
       --muted2: #999;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box }
 
-    html,
-    body {
+    html, body {
       height: 100vh;
       overflow-x: hidden;
       overflow-y: hidden;
@@ -51,32 +46,14 @@
       position: sticky;
       top: 0;
       z-index: 600;
-      background: rgba(0, 0, 0, .97);
+      background: rgba(0,0,0,.97);
       backdrop-filter: blur(20px)
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: .55rem
-    }
-
-    .logo img {
-      height: 30px;
-      object-fit: contain
-    }
-
-    .logo-txt {
-      font-weight: 700;
-      font-size: .9rem;
-      letter-spacing: .1em;
-      text-transform: uppercase
-    }
-
-    .logo-txt span {
-      color: var(--accent)
-    }
-
+    .logo { display: flex; align-items: center; gap: .55rem }
+    .logo img { height: 30px; object-fit: contain }
+    .logo-txt { font-weight: 700; font-size: .9rem; letter-spacing: .1em; text-transform: uppercase }
+    .logo-txt span { color: var(--accent) }
     .nav-tag {
       font-size: .62rem;
       letter-spacing: .16em;
@@ -100,44 +77,15 @@
       gap: 1.2rem
     }
 
-    .ld-logo {
-      font-weight: 700;
-      font-size: 1.9rem;
-      letter-spacing: .15em;
-      text-transform: uppercase
-    }
+    .ld-logo { font-weight: 700; font-size: 1.9rem; letter-spacing: .15em; text-transform: uppercase }
+    .ld-logo span { color: var(--accent) }
+    .ld-bar { width: 200px; height: 2px; background: var(--s2); border-radius: 99px; overflow: hidden }
+    .ld-fill { height: 100%; width: 0%; background: radial-gradient(ellipse 80% 70% at 50% 50%, #AB24F2, #7736F1); border-radius: 99px; transition: width .2s ease }
+    .ld-txt { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted2); font-weight: 500 }
+    /* Sub-label for pages rendered count */
+    .ld-sub { font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 500; min-height: 1em }
 
-    .ld-logo span {
-      color: var(--accent)
-    }
-
-    .ld-bar {
-      width: 200px;
-      height: 2px;
-      background: var(--s2);
-      border-radius: 99px;
-      overflow: hidden
-    }
-
-    .ld-fill {
-      height: 100%;
-      width: 0%;
-      background: radial-gradient(ellipse 80% 70% at 50% 50%, #AB24F2, #7736F1);
-      border-radius: 99px;
-      transition: width .2s ease
-    }
-
-    .ld-txt {
-      font-size: .68rem;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--muted2);
-      font-weight: 500
-    }
-
-    #sv {
-      display: none
-    }
+    #sv { display: none }
 
     .vbar {
       height: auto;
@@ -155,28 +103,9 @@
       flex-wrap: wrap
     }
 
-    .vbl {
-      display: flex;
-      align-items: center;
-      gap: .5rem
-    }
-
-    .vbr {
-      display: flex;
-      align-items: center;
-      gap: .25rem;
-      flex-wrap: wrap;
-      padding: .35rem 0
-    }
-
-    .pn {
-      font-size: .7rem;
-      color: var(--muted2);
-      font-weight: 500;
-      letter-spacing: .04em;
-      white-space: nowrap;
-      min-width: 78px
-    }
+    .vbl { display: flex; align-items: center; gap: .5rem }
+    .vbr { display: flex; align-items: center; gap: .25rem; flex-wrap: wrap; padding: .35rem 0 }
+    .pn { font-size: .7rem; color: var(--muted2); font-weight: 500; letter-spacing: .04em; white-space: nowrap; min-width: 78px }
 
     .vt {
       background: var(--s2);
@@ -214,42 +143,10 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .zoom-wrap {
-      display: flex;
-      align-items: center;
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      overflow: hidden
-    }
-
-    .zb {
-      background: var(--s2);
-      border: none;
-      color: var(--muted2);
-      width: 26px;
-      height: 24px;
-      font-size: .95rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: .12s
-    }
-
-    .zb:hover {
-      background: var(--adim);
-      color: var(--accentl)
-    }
-
-    .z-val {
-      font-size: .62rem;
-      color: var(--muted2);
-      padding: 0 .35rem;
-      min-width: 34px;
-      text-align: center;
-      font-weight: 600;
-      background: var(--s2)
-    }
+    .zoom-wrap { display: flex; align-items: center; border: 1px solid var(--border); border-radius: 5px; overflow: hidden }
+    .zb { background: var(--s2); border: none; color: var(--muted2); width: 26px; height: 24px; font-size: .95rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: .12s }
+    .zb:hover { background: var(--adim); color: var(--accentl) }
+    .z-val { font-size: .62rem; color: var(--muted2); padding: 0 .35rem; min-width: 34px; text-align: center; font-weight: 600; background: var(--s2) }
 
     .snd {
       display: flex;
@@ -296,7 +193,7 @@
       inset: 0;
       pointer-events: none;
       z-index: 2;
-      background: radial-gradient(ellipse 80% 70% at 50% 50%, transparent 38%, rgba(0, 0, 0, .6) 100%)
+      background: radial-gradient(ellipse 80% 70% at 50% 50%, transparent 38%, rgba(0,0,0,.6) 100%)
     }
 
     #book-root {
@@ -315,7 +212,7 @@
       height: 32px;
       z-index: -1;
       pointer-events: none;
-      background: radial-gradient(ellipse 85% 100% at 50% 0%, rgba(0, 0, 0, .65), transparent);
+      background: radial-gradient(ellipse 85% 100% at 50% 0%, rgba(0,0,0,.65), transparent);
       filter: blur(12px)
     }
 
@@ -327,8 +224,8 @@
       width: 46px;
       height: 46px;
       border-radius: 50%;
-      background: rgba(0, 0, 0, .92);
-      border: 1px solid rgba(255, 255, 255, .1);
+      background: rgba(0,0,0,.92);
+      border: 1px solid rgba(255,255,255,.1);
       color: var(--text);
       font-size: 1.4rem;
       display: flex;
@@ -337,7 +234,7 @@
       cursor: pointer;
       transition: .15s;
       user-select: none;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, .6)
+      box-shadow: 0 4px 20px rgba(0,0,0,.6)
     }
 
     .arr:hover {
@@ -348,141 +245,15 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .arr.off {
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-50%) scale(.85)
-    }
+    .arr.off { opacity: 0; pointer-events: none; transform: translateY(-50%) scale(.85) }
+    #arr-p { left: .8rem }
+    #arr-n { right: .8rem }
 
-    #arr-p {
-      left: .8rem
-    }
+    #spf-host .page { background: #fff; overflow: hidden }
+    #spf-host .page canvas { display: block; width: 100% !important; height: 100% !important }
 
-    #arr-n {
-      right: .8rem
-    }
-
-    #spf-host .page {
-      background: #fff;
-      overflow: hidden
-    }
-
-    #spf-host .page canvas {
-      display: block;
-      width: 100% !important;
-      height: 100% !important
-    }
-
-    .sl-clip {
-      overflow: hidden
-    }
-
-    .sl-track {
-      display: flex;
-      will-change: transform
-    }
-
-    .cf-wrap {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      perspective: 1400px;
-      overflow: visible
-    }
-
-    .cf-item {
-      position: absolute;
-      overflow: hidden;
-      will-change: transform, opacity;
-      transition: transform .5s cubic-bezier(.4, 0, .2, 1), opacity .5s, box-shadow .5s;
-      cursor: pointer
-    }
-
-    .cards-wrap {
-      position: relative
-    }
-
-    .card-item {
-      position: absolute;
-      top: 0;
-      left: 0;
-      border-radius: 5px;
-      overflow: hidden
-    }
-
-    .sp-wrap {
-      overflow: hidden;
-      will-change: opacity, transform
-    }
-
-    .nb-outer {
-      display: flex;
-      align-items: stretch
-    }
-
-    .nb-rings {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-      padding: .7rem .3rem;
-      min-width: 28px;
-      background: linear-gradient(180deg, #1a1a1a, #0f0f0f);
-      border-radius: 7px 0 0 7px;
-      border: 1px solid rgba(255, 255, 255, .05);
-      border-right: none
-    }
-
-    .nb-ring {
-      width: 20px;
-      height: 14px;
-      border-radius: 50%;
-      border: 2px solid #333;
-      background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
-      box-shadow: inset 0 1px 3px rgba(0, 0, 0, .8)
-    }
-
-    .nb-pg {
-      overflow: hidden;
-      border-radius: 0 5px 5px 0;
-      will-change: transform, opacity
-    }
-
-    .alb-outer {
-      position: relative
-    }
-
-    .alb-coils {
-      position: absolute;
-      top: -14px;
-      left: 0;
-      right: 0;
-      height: 28px;
-      z-index: 20;
-      display: flex;
-      justify-content: space-around;
-      padding: 0 16px;
-      align-items: center;
-      pointer-events: none
-    }
-
-    .alb-coil {
-      width: 20px;
-      height: 15px;
-      border-radius: 50%;
-      border: 2px solid #333;
-      background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
-      box-shadow: inset 0 1px 3px rgba(0, 0, 0, .8)
-    }
-
-    .alb-pg {
-      overflow: hidden;
-      border-radius: 2px;
-      position: relative;
-      top: 14px;
-      will-change: transform, opacity
-    }
+    .sl-clip { overflow: hidden }
+    .sl-track { display: flex; will-change: transform }
 
     .ts {
       display: flex;
@@ -493,14 +264,8 @@
       border-top: 1px solid var(--border)
     }
 
-    .ts::-webkit-scrollbar {
-      height: 3px
-    }
-
-    .ts::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, .1);
-      border-radius: 99px
-    }
+    .ts::-webkit-scrollbar { height: 3px }
+    .ts::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 99px }
 
     .thumb {
       flex-shrink: 0;
@@ -513,20 +278,24 @@
       transition: .12s
     }
 
-    .thumb:hover {
-      border-color: rgba(230, 51, 41, .5);
-      transform: translateY(-2px)
+    .thumb:hover { border-color: rgba(230,51,41,.5); transform: translateY(-2px) }
+    .thumb.cur { border-color: #AB24F2; box-shadow: 0 0 0 1px #AB24F2; }
+    .thumb canvas { display: block; width: 100%; height: auto }
+
+    /* Placeholder thumb while rendering */
+    .thumb-ph {
+      flex-shrink: 0;
+      width: 36px;
+      height: 48px;
+      border: 1.5px solid var(--border);
+      border-radius: 3px;
+      background: var(--s2);
+      animation: ph-pulse 1.4s ease-in-out infinite;
     }
 
-    .thumb.cur {
-      border-color: #AB24F2;
-      box-shadow: 0 0 0 1px #AB24F2;
-    }
-
-    .thumb canvas {
-      display: block;
-      width: 100%;
-      height: auto
+    @keyframes ph-pulse {
+      0%, 100% { opacity: .35 }
+      50% { opacity: .7 }
     }
 
     #err {
@@ -540,123 +309,32 @@
       text-align: center
     }
 
-    #err h2 {
-      font-size: 1.2rem;
-      font-weight: 700
-    }
-
-    #err p {
-      color: var(--muted2);
-      max-width: 340px;
-      line-height: 1.7;
-      font-size: .82rem
-    }
-
-    #err code {
-      background: var(--s2);
-      padding: .2rem .5rem;
-      border-radius: 4px;
-      font-size: .72rem;
-      color: var(--accentl)
-    }
+    #err h2 { font-size: 1.2rem; font-weight: 700 }
+    #err p { color: var(--muted2); max-width: 340px; line-height: 1.7; font-size: .82rem }
+    #err code { background: var(--s2); padding: .2rem .5rem; border-radius: 4px; font-size: .72rem; color: var(--accentl) }
 
     /* ── MOBILE RESPONSIVE ── */
     @media (max-width: 640px) {
-      nav {
-        padding: 0 .8rem;
-        height: 48px;
-      }
-
-      .logo-txt {
-        font-size: .78rem;
-      }
-
-      .nav-tag {
-        font-size: .54rem;
-        padding: .15rem .35rem;
-        letter-spacing: .1em;
-      }
-
-      .vbar {
-        top: 48px;
-        padding: .3rem .5rem;
-        gap: .2rem;
-      }
-
-      /* Hide less-used effect buttons on mobile; keep core ones */
-      .vt[data-v="notebook"],
-      .vt[data-v="coverflow"],
-      .vt[data-v="cards"],
-      .vt[data-v="album"] {
-        display: none;
-      }
-
-      .vbr {
-        gap: .2rem;
-        padding: .25rem 0;
-      }
-
-      .vt {
-        padding: .22rem .42rem;
-        font-size: .56rem;
-      }
-
-      .pn {
-        font-size: .62rem;
-        min-width: 60px;
-      }
-
-      .zb {
-        width: 24px;
-        height: 22px;
-        font-size: .85rem;
-      }
-
-      .z-val {
-        font-size: .56rem;
-        min-width: 28px;
-      }
-
-      .snd {
-        font-size: .56rem;
-        padding: .22rem .42rem;
-      }
-
-      /* Stage: account for smaller nav (48px) + taller toolbar */
-      .stage {
-        height: calc(100dvh - 48px - 60px - 52px);
-        min-height: 200px;
-      }
-
-      /* Arrows: smaller and closer to edge */
-      .arr {
-        width: 36px;
-        height: 36px;
-        font-size: 1.1rem;
-      }
-
+      nav { padding: 0 .8rem; height: 48px; }
+      .logo-txt { font-size: .78rem; }
+      .nav-tag { font-size: .54rem; padding: .15rem .35rem; letter-spacing: .1em; }
+      .vbar { top: 48px; padding: .3rem .5rem; gap: .2rem; }
+      .vbr { gap: .2rem; padding: .25rem 0; }
+      .vt { padding: .22rem .42rem; font-size: .56rem; }
+      .pn { font-size: .62rem; min-width: 60px; }
+      .zb { width: 24px; height: 22px; font-size: .85rem; }
+      .z-val { font-size: .56rem; min-width: 28px; }
+      .snd { font-size: .56rem; padding: .22rem .42rem; }
+      .stage { height: calc(100dvh - 48px - 60px - 52px); min-height: 200px; }
+      .arr { width: 36px; height: 36px; font-size: 1.1rem; }
       #arr-p { left: .35rem; }
       #arr-n { right: .35rem; }
-
-      /* Thumbnail strip: smaller thumbs */
-      .ts {
-        padding: .35rem .5rem;
-      }
-
-      .thumb {
-        width: 28px;
-      }
+      .ts { padding: .35rem .5rem; }
+      .thumb { width: 28px; }
     }
 
     @media (max-width: 380px) {
-      .vt[data-v="book"],
-      .vt[data-v="slider"] {
-        display: none;
-      }
-
-      .nav-tag {
-        display: none;
-      }
+      .nav-tag { display: none; }
     }
   </style>
 </head>
@@ -665,16 +343,14 @@
 
   <div id="loading">
     <div class="ld-logo">SquareZix</div>
-    <div class="ld-bar">
-      <div class="ld-fill" id="ldf"></div>
-    </div>
+    <div class="ld-bar"><div class="ld-fill" id="ldf"></div></div>
     <div class="ld-txt" id="ldt">Loading Company Profile…</div>
+    <div class="ld-sub" id="ldsub"></div>
   </div>
 
   <nav>
     <div class="logo">
-      <img src="https://squarezix.com/wp-content/uploads/2024/05/cropped-SZ-Logo.png" alt="SquareZix"
-        onerror="this.style.display='none'">
+      <img src="https://squarezix.com/wp-content/uploads/2024/05/cropped-SZ-Logo.png" alt="SquareZix" onerror="this.style.display='none'">
       <span class="logo-txt">SquareZix</span>
     </div>
     <span class="nav-tag">Company Profile</span>
@@ -691,13 +367,8 @@
       <div class="vbl"><span class="pn" id="pn">Page 1 of —</span></div>
       <div class="vbr">
         <button class="vt on" data-v="magazine" onclick="swFx(this)">📖 Magazine</button>
-        <!-- <button class="vt" data-v="notebook" onclick="swFx(this)">📓 Notebook</button> -->
         <button class="vt" data-v="book" onclick="swFx(this)">📚 Book</button>
         <button class="vt" data-v="slider" onclick="swFx(this)">🎞️ Slider</button>
-        <!-- <button class="vt" data-v="coverflow" onclick="swFx(this)">🌀 Coverflow</button> -->
-        <!-- <button class="vt" data-v="cards" onclick="swFx(this)">🃏 Cards</button> -->
-        <!-- <button class="vt" data-v="onepage" onclick="swFx(this)">📃 Single</button> -->
-        <!-- <button class="vt" data-v="album" onclick="swFx(this)">🖼️ Album</button> -->
         <div class="zoom-wrap">
           <button class="zb" onclick="zoom(-1)">−</button>
           <span class="z-val" id="zval">100%</span>
@@ -721,9 +392,14 @@
     const PDF_URL = './SZ-Company-Profile-2027.pdf';
 
     /* STATE */
-    let pdfDoc, total, DPR;
-    let cache = [];
-    let thumbs = [];
+    let pdfDoc, total;
+
+    // ─── KEY OPTIMISATION: cap DPR at 2 (was 3).
+    // A DPR-3 canvas has 9× the pixels of DPR-1, crushing render time.
+    const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+    let cache = [];          // full-res canvases, indexed by page
+    let thumbs = [];         // thumbnail canvases, indexed by page
     let pgW, pgH;
     let zoomLvl = 1.0, effect = 'magazine', cur = 0, pf = null, busy = false, _st = {};
     let soundOn = true;
@@ -737,9 +413,14 @@
       if (!soundOn) return;
       const v = Math.max(0.3, Math.min(2, 600 / (performance.now() - _ft || 400)));
       const a = SND[v > 1.5 ? 'lg' : v > 0.7 ? 'md' : 'sm'];
-      a.currentTime = 0; a.volume = Math.min(1, 0.45 + v * 0.28); a.play().catch(() => { }); _ft = 0;
+      a.currentTime = 0; a.volume = Math.min(1, 0.45 + v * 0.28); a.play().catch(() => {});
+      _ft = 0;
     }
-    function toggleSnd() { soundOn = !soundOn; document.getElementById('snd').classList.toggle('on', soundOn); document.getElementById('sico').textContent = soundOn ? '🔊' : '🔇'; }
+    function toggleSnd() {
+      soundOn = !soundOn;
+      document.getElementById('snd').classList.toggle('on', soundOn);
+      document.getElementById('sico').textContent = soundOn ? '🔊' : '🔇';
+    }
 
     /* ZOOM */
     function zoom(dir) {
@@ -747,70 +428,110 @@
       document.getElementById('zval').textContent = Math.round(zoomLvl * 100) + '%';
       document.getElementById('book-root').style.transform = `scale(${zoomLvl})`;
     }
-    document.addEventListener('wheel', e => { if (e.ctrlKey || e.metaKey) { e.preventDefault(); zoom(e.deltaY < 0 ? 1 : -1); } }, { passive: false });
+    document.addEventListener('wheel', e => {
+      if (e.ctrlKey || e.metaKey) { e.preventDefault(); zoom(e.deltaY < 0 ? 1 : -1); }
+    }, { passive: false });
     document.addEventListener('keydown', e => {
       if (document.getElementById('sv').style.display === 'none') return;
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goNext();
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goPrev();
+      if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   goPrev();
       if (e.key === '=' || e.key === '+') zoom(1);
       if (e.key === '-') zoom(-1);
     });
 
-    /* Helper: get stage dimensions accounting for actual rendered size */
     function getStageSize() {
       const el = document.getElementById('stage');
       return { w: el.clientWidth, h: el.clientHeight };
     }
 
+    /* ─────────────────────────────────────────────────────────────
+       MAIN LOAD
+       Key optimisations vs original:
+         1. Render pages in PARALLEL batches of BATCH_SIZE instead
+            of sequentially with await-in-a-loop.
+         2. Show the viewer as soon as ALL pages are rendered.
+         3. Render thumbnails AFTER the viewer is visible, in a
+            separate async pass — they never block page display.
+         4. DPR capped at 2 (see above).
+         5. Page viewport scale computed ONCE and reused.
+    ───────────────────────────────────────────────────────────── */
+    const BATCH_SIZE = 4;   // render 4 pages concurrently; tune to taste
+
     window.addEventListener('load', async () => {
-      const setP = (p, msg) => { document.getElementById('ldf').style.width = p + '%'; document.getElementById('ldt').textContent = msg; };
+      const setP   = (p, msg) => {
+        document.getElementById('ldf').style.width = p + '%';
+        document.getElementById('ldt').textContent = msg;
+      };
+      const setSub = msg => { document.getElementById('ldsub').textContent = msg; };
+
       try {
-        setP(10, 'Fetching PDF…');
+        setP(5, 'Fetching PDF…');
         const res = await fetch(PDF_URL);
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const buf = await res.arrayBuffer();
 
-        setP(30, 'Parsing…');
+        setP(15, 'Parsing document…');
         pdfDoc = await pdfjsLib.getDocument({ data: buf }).promise;
         total = pdfDoc.numPages;
-        DPR = Math.min(window.devicePixelRatio || 1, 3);
 
+        // ── Compute display size from first page (done once) ──
         const vp0 = (await pdfDoc.getPage(1)).getViewport({ scale: 1 });
-        const asp = vp0.height / vp0.width;
-        const stW = window.innerWidth - 100, stH = window.innerHeight - 120;
+        const asp  = vp0.height / vp0.width;
+        const stW  = window.innerWidth - 100, stH = window.innerHeight - 120;
         pgW = Math.floor((stW - 8) / 2);
         pgH = Math.round(pgW * asp);
         if (pgH > stH - 20) { pgH = stH - 20; pgW = Math.round(pgH / asp); }
 
-        const physW = Math.round(pgW * DPR), physH = Math.round(pgH * DPR);
-        const scale = physW / vp0.width;
+        const physW = Math.round(pgW * DPR);
+        const physH = Math.round(pgH * DPR);
+        // ── Render scale computed once from page 1 dimensions ──
+        const renderScale = physW / vp0.width;
 
-        for (let i = 0; i < total; i++) {
-          const pg = await pdfDoc.getPage(i + 1);
+        cache  = new Array(total);
+        thumbs = new Array(total);
 
-          const vp = pg.getViewport({ scale });
-          const c = document.createElement('canvas');
-          c.width = physW; c.height = physH;
-          const ctx = c.getContext('2d', { alpha: false, willReadFrequently: true });
-          ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, physW, physH);
-          await pg.render({ canvasContext: ctx, viewport: vp }).promise;
-          cache[i] = c;
+        setP(18, 'Rendering pages…');
 
-          const tvp = pg.getViewport({ scale: 0.15 });
-          const tc = document.createElement('canvas');
-          tc.width = tvp.width; tc.height = tvp.height;
-          const tx = tc.getContext('2d', { alpha: false, willReadFrequently: true });
-          tx.fillStyle = '#fff'; tx.fillRect(0, 0, tc.width, tc.height);
-          await pg.render({ canvasContext: tx, viewport: tvp }).promise;
-          thumbs[i] = tc;
+        // ── Parallel batch rendering ──
+        let done = 0;
+        for (let start = 0; start < total; start += BATCH_SIZE) {
+          const end   = Math.min(start + BATCH_SIZE, total);
+          const batch = [];
 
-          setP(30 + Math.round(((i + 1) / total) * 65), `Rendering page ${i + 1} of ${total}…`);
+          for (let i = start; i < end; i++) {
+            batch.push((async idx => {
+              const pg = await pdfDoc.getPage(idx + 1);
+              const vp = pg.getViewport({ scale: renderScale });
+
+              const c   = document.createElement('canvas');
+              c.width   = physW;
+              c.height  = physH;
+              const ctx = c.getContext('2d', { alpha: false });
+              ctx.fillStyle = '#fff';
+              ctx.fillRect(0, 0, physW, physH);
+              await pg.render({ canvasContext: ctx, viewport: vp }).promise;
+              cache[idx] = c;
+            })(i));
+          }
+
+          await Promise.all(batch);
+
+          done += (end - start);
+          const pct = 18 + Math.round((done / total) * 77);
+          setP(pct, 'Rendering pages…');
+          setSub(`${done} / ${total} pages ready`);
         }
 
+        // ── Show viewer immediately — all pages are in cache ──
         setP(100, 'Ready');
         document.getElementById('loading').style.display = 'none';
         document.getElementById('sv').style.display = 'block';
-        build(effect); syncTabs(effect); buildThumbs();
+        build(effect);
+        syncTabs(effect);
+
+        // ── Render placeholder thumbs instantly, real ones async ──
+        buildThumbPlaceholders();
+        renderThumbsAsync();   // runs in background, does not block
 
       } catch (e) {
         console.error(e);
@@ -820,52 +541,117 @@
       }
     });
 
-    /* Redraw on resize */
+    /* ── Resize rebuild ── */
     let _resizeTimer;
     window.addEventListener('resize', () => {
       clearTimeout(_resizeTimer);
       _resizeTimer = setTimeout(() => { build(effect); }, 220);
     });
 
+    /* ─────────────────────────────────────────────────────────────
+       THUMBNAIL RENDERING — entirely async, after viewer is shown
+    ───────────────────────────────────────────────────────────── */
+    function buildThumbPlaceholders() {
+      const strip = document.getElementById('ts');
+      strip.innerHTML = '';
+      for (let i = 0; i < total; i++) {
+        const ph = document.createElement('div');
+        ph.className = 'thumb-ph';
+        ph.id = `th-${i}`;
+        strip.appendChild(ph);
+      }
+    }
+
+    async function renderThumbsAsync() {
+      const THUMB_SCALE = 0.12;   // small enough to be fast
+      const THUMB_BATCH = 6;      // more concurrent for tiny renders
+
+      for (let start = 0; start < total; start += THUMB_BATCH) {
+        const end   = Math.min(start + THUMB_BATCH, total);
+        const batch = [];
+
+        for (let i = start; i < end; i++) {
+          batch.push((async idx => {
+            const pg  = await pdfDoc.getPage(idx + 1);
+            const tvp = pg.getViewport({ scale: THUMB_SCALE });
+            const tc  = document.createElement('canvas');
+            tc.width  = tvp.width;
+            tc.height = tvp.height;
+            const tx  = tc.getContext('2d', { alpha: false });
+            tx.fillStyle = '#fff';
+            tx.fillRect(0, 0, tc.width, tc.height);
+            await pg.render({ canvasContext: tx, viewport: tvp }).promise;
+            thumbs[idx] = tc;
+
+            // Swap placeholder with real thumb
+            const ph = document.getElementById(`th-${idx}`);
+            if (ph) {
+              const wrap = document.createElement('div');
+              wrap.className = 'thumb' + (idx === cur ? ' cur' : '');
+              wrap.id = `th-${idx}`;
+              const c = document.createElement('canvas');
+              c.width  = tc.width;
+              c.height = tc.height;
+              c.getContext('2d').drawImage(tc, 0, 0);
+              wrap.appendChild(c);
+              wrap.onclick = () => jumpTo(idx);
+              ph.replaceWith(wrap);
+            }
+          })(i));
+        }
+
+        await Promise.all(batch);
+        // Yield to the browser between thumbnail batches so the
+        // page-flip animation stays perfectly smooth
+        await new Promise(r => setTimeout(r, 0));
+      }
+    }
+
+    /* ─────────────────────────────────────────────────────────────
+       PAGE CANVAS HELPER
+    ───────────────────────────────────────────────────────────── */
     function pageCanvas(i, w, h) {
       const wrap = document.createElement('div');
       wrap.style.cssText = `width:${w}px;height:${h}px;overflow:hidden;background:#fff;flex-shrink:0`;
-      const c = document.createElement('canvas');
-      c.width = Math.round(w * DPR);
-      c.height = Math.round(h * DPR);
+      const c   = document.createElement('canvas');
+      c.width   = Math.round(w * DPR);
+      c.height  = Math.round(h * DPR);
       c.style.cssText = `width:${w}px;height:${h}px;display:block`;
-      c.getContext('2d', { alpha: false, willReadFrequently: true })
-        .drawImage(cache[i], 0, 0, c.width, c.height);
+      c.getContext('2d', { alpha: false }).drawImage(cache[i], 0, 0, c.width, c.height);
       wrap.appendChild(c);
       return wrap;
     }
 
-    /* DESTROY / BUILD */
-    function destroy() { if (pf) { try { pf.destroy(); } catch (e) { } pf = null; } document.getElementById('book-root').innerHTML = ''; busy = false; _st = {}; }
+    /* ─────────────────────────────────────────────────────────────
+       DESTROY / BUILD
+    ───────────────────────────────────────────────────────────── */
+    function destroy() {
+      if (pf) { try { pf.destroy(); } catch (e) {} pf = null; }
+      document.getElementById('book-root').innerHTML = '';
+      busy = false; _st = {};
+    }
+
     function build(e) {
       destroy();
       const { w, h } = getStageSize();
-      if (e === 'magazine' || e === 'book') buildMagBook(e, w, h);
-      else if (e === 'slider') buildSlider(w, h);
-      else if (e === 'coverflow') buildCoverflow(w, h);
-      else if (e === 'cards') buildCards(w, h);
-      else if (e === 'onepage') buildOnePage(w, h);
-      else if (e === 'album') buildAlbum(w, h);
-      else if (e === 'notebook') buildNotebook(w, h);
+      if      (e === 'magazine' || e === 'book') buildMagBook(e, w, h);
+      else if (e === 'slider')  buildSlider(w, h);
       updateUI();
     }
+
     function swFx(btn) { effect = btn.dataset.v; syncTabs(effect); build(effect); }
     function syncTabs(e) { document.querySelectorAll('.vt[data-v]').forEach(b => b.classList.toggle('on', b.dataset.v === e)); }
 
-    /* MAGAZINE / BOOK */
+    /* ─────────────────────────────────────────────────────────────
+       MAGAZINE / BOOK
+    ───────────────────────────────────────────────────────────── */
     function buildMagBook(mode, stW, stH) {
       const isMobile = window.innerWidth <= 640;
       const root = document.getElementById('book-root');
-      const asp = pgH / pgW;
+      const asp  = pgH / pgW;
 
       let w, h;
       if (isMobile) {
-        // On mobile show single page (full width)
         w = Math.min(stW - 40, pgW);
         h = Math.round(w * asp);
         if (h > stH - 20) { h = stH - 20; w = Math.round(h / asp); }
@@ -883,11 +669,13 @@
         d.style.cssText = `width:${w}px;height:${h}px;overflow:hidden;background:#fff`;
         if (i === 0 || i === total - 1) d.dataset.density = 'hard';
         const c = document.createElement('canvas');
-        c.width = Math.round(w * DPR); c.height = Math.round(h * DPR);
+        c.width  = Math.round(w * DPR);
+        c.height = Math.round(h * DPR);
         c.style.cssText = `width:${w}px;height:${h}px;display:block`;
-        c.getContext('2d', { alpha: false, willReadFrequently: true }).drawImage(cache[i], 0, 0, c.width, c.height);
+        c.getContext('2d', { alpha: false }).drawImage(cache[i], 0, 0, c.width, c.height);
         d.appendChild(c); host.appendChild(d); divs.push(d);
       }
+
       pf = new St.PageFlip(host, {
         width: w, height: h, size: 'fixed', drawShadow: true,
         flippingTime: mode === 'book' ? 440 : 860,
@@ -902,9 +690,13 @@
       _st = { w, h };
     }
 
-    /* SLIDER */
+    /* ─────────────────────────────────────────────────────────────
+       SLIDER
+    ───────────────────────────────────────────────────────────── */
     function buildSlider(stW, stH) {
-      const asp = pgH / pgW; let w = stW - 40, h = Math.round(w * asp); if (h > stH - 20) { h = stH - 20; w = Math.round(h / asp); }
+      const asp = pgH / pgW;
+      let w = stW - 40, h = Math.round(w * asp);
+      if (h > stH - 20) { h = stH - 20; w = Math.round(h / asp); }
       const root = document.getElementById('book-root');
       const clip = document.createElement('div'); clip.className = 'sl-clip';
       clip.style.cssText = `width:${w}px;height:${h}px;box-shadow:0 14px 50px rgba(0,0,0,.75),0 60px 130px rgba(0,0,0,.8)`;
@@ -914,157 +706,19 @@
       clip.appendChild(track); root.appendChild(clip);
       _st = { w, h, track }; addSwipe(clip); sliderTo(cur);
     }
+
     function sliderTo(i) { if (_st.track) _st.track.style.transform = `translateX(-${i * _st.w}px)`; }
-
-    /* COVERFLOW */
-    function buildCoverflow(stW, stH) {
-      const asp = pgH / pgW;
-      const isMobile = window.innerWidth <= 640;
-      let w = Math.min(Math.round((stW - 40) * (isMobile ? .7 : .38)), isMobile ? 320 : 440);
-      let h = Math.round(w * asp); if (h > stH - 40) { h = stH - 40; w = Math.round(h / asp); }
-      const root = document.getElementById('book-root');
-      const wrap = document.createElement('div'); wrap.className = 'cf-wrap';
-      wrap.style.cssText = `width:${stW - 20}px;height:${h}px`;
-      _st = { w, h, wrap }; root.appendChild(wrap); addSwipe(wrap); cfRender();
-    }
-    function cfRender() {
-      const { w, h, wrap } = _st; if (!wrap) return; wrap.innerHTML = '';
-      const isMobile = window.innerWidth <= 640;
-      const offsets = isMobile ? [-1, 0, 1] : [-2, -1, 0, 1, 2];
-      offsets.forEach(off => {
-        const idx = cur + off; if (idx < 0 || idx >= total) return;
-        const item = document.createElement('div'); item.className = 'cf-item';
-        const ao = Math.abs(off), sc = off === 0 ? 1 : 1 - ao * .1, ry = off === 0 ? 0 : off > 0 ? -52 : 52, tx = off * w * .7;
-        item.style.cssText = `width:${w}px;height:${h}px;transform:translateX(${tx}px) rotateY(${ry}deg) scale(${sc});z-index:${10 - ao * 2};opacity:${ao > 1 ? .34 : ao === 1 ? .68 : 1};box-shadow:${off === 0 ? '0 0 0 1px rgba(255,255,255,.06),0 30px 100px rgba(0,0,0,.95)' : '0 10px 40px rgba(0,0,0,.65)'}`;
-        item.appendChild(pageCanvas(idx, w, h));
-        if (off !== 0) item.onclick = () => { cur = idx; playFlip(); cfRender(); updateUI(); };
-        wrap.appendChild(item);
-      });
-    }
-
-    /* CARDS */
-    function buildCards(stW, stH) {
-      const asp = pgH / pgW;
-      const isMobile = window.innerWidth <= 640;
-      let w = Math.min(Math.round((stW - 40) * (isMobile ? .88 : .58)), isMobile ? 400 : 580);
-      let h = Math.min(Math.round(w * asp), stH - 60); w = Math.round(h / asp);
-      const root = document.getElementById('book-root');
-      const stage = document.createElement('div'); stage.className = 'cards-wrap';
-      stage.style.cssText = `width:${w}px;height:${h + 32}px;perspective:1000px`;
-      _st = { w, h, stage }; root.appendChild(stage); addSwipe(stage); cardsRender();
-    }
-    function cardsRender() {
-      const { w, h, stage } = _st; if (!stage) return; stage.innerHTML = '';
-      [2, 1, 0].forEach(b => {
-        const idx = Math.max(0, Math.min(total - 1, cur - b));
-        const card = document.createElement('div'); card.className = 'card-item';
-        card.style.cssText = `width:${w}px;height:${h}px;transform:scale(${1 - b * .032}) translateY(${b * 10}px);transform-origin:center bottom;z-index:${10 - b};box-shadow:0 ${5 + b * 4}px ${24 + b * 16}px rgba(0,0,0,${.58 + b * .09})`;
-        card.appendChild(pageCanvas(idx, w, h)); stage.appendChild(card);
-      });
-    }
-    function cardsFlip(dir) {
-      const { stage } = _st; if (!stage || busy) return; busy = true;
-      const top = stage.lastElementChild; if (!top) { busy = false; return; }
-      top.style.transition = 'transform .45s cubic-bezier(.645,.045,.355,1),opacity .35s ease';
-      top.style.transformOrigin = 'center bottom';
-      top.style.transform = `perspective(950px) rotateX(${dir === 'next' ? -175 : 175}deg) scale(.85)`;
-      top.style.opacity = '0';
-      setTimeout(() => { cardsRender(); busy = false; }, 470);
-    }
-
-    /* ONE PAGE */
-    function buildOnePage(stW, stH) {
-      const asp = pgH / pgW; let w = stW - 40, h = Math.round(w * asp); if (h > stH - 20) { h = stH - 20; w = Math.round(h / asp); }
-      const root = document.getElementById('book-root');
-      const wrap = document.createElement('div'); wrap.className = 'sp-wrap';
-      wrap.style.cssText = `width:${w}px;height:${h}px;box-shadow:0 10px 40px rgba(0,0,0,.7),0 60px 130px rgba(0,0,0,.85)`;
-      wrap.appendChild(pageCanvas(cur, w, h)); root.appendChild(wrap);
-      _st = { w, h, wrap }; addSwipe(wrap);
-    }
-    function oneFlip() {
-      const { w, h, wrap } = _st; if (!wrap || busy) return; busy = true;
-      wrap.style.transition = 'opacity .18s ease,transform .18s ease';
-      wrap.style.opacity = '0'; wrap.style.transform = 'scale(1.04)';
-      setTimeout(() => {
-        wrap.innerHTML = ''; wrap.appendChild(pageCanvas(cur, w, h));
-        wrap.style.transition = 'none'; wrap.style.opacity = '0'; wrap.style.transform = 'scale(.97)';
-        requestAnimationFrame(() => {
-          wrap.style.transition = 'opacity .28s ease,transform .28s ease';
-          wrap.style.opacity = '1'; wrap.style.transform = 'scale(1)';
-          setTimeout(() => busy = false, 300);
-        });
-      }, 200);
-    }
-
-    /* ALBUM */
-    function buildAlbum(stW, stH) {
-      const asp = pgH / pgW; let w = stW - 40, h = Math.round(w * asp); if (h > stH - 60) { h = stH - 60; w = Math.round(h / asp); }
-      const root = document.getElementById('book-root');
-      const outer = document.createElement('div'); outer.className = 'alb-outer'; outer.style.cssText = `width:${w}px;height:${h + 14}px`;
-      const coils = document.createElement('div'); coils.className = 'alb-coils';
-      for (let i = 0; i < 12; i++) { const c = document.createElement('div'); c.className = 'alb-coil'; coils.appendChild(c); }
-      const pg = document.createElement('div'); pg.className = 'alb-pg';
-      pg.style.cssText = `width:${w}px;height:${h}px;box-shadow:0 24px 70px rgba(0,0,0,.82)`;
-      pg.appendChild(pageCanvas(cur, w, h));
-      outer.appendChild(coils); outer.appendChild(pg); root.appendChild(outer);
-      _st = { w, h, pg }; addSwipe(outer);
-    }
-    function albumFlip() {
-      const { w, h, pg } = _st; if (!pg || busy) return; busy = true;
-      pg.style.transition = 'transform .5s cubic-bezier(.645,.045,.355,1),opacity .26s ease';
-      pg.style.transformOrigin = 'center top';
-      pg.style.transform = 'perspective(1500px) rotateX(-185deg)'; pg.style.opacity = '0';
-      setTimeout(() => {
-        pg.innerHTML = ''; pg.appendChild(pageCanvas(cur, w, h));
-        pg.style.transition = 'none'; pg.style.transform = 'perspective(1500px) rotateX(185deg)'; pg.style.opacity = '0';
-        requestAnimationFrame(() => {
-          pg.style.transition = 'transform .5s cubic-bezier(.645,.045,.355,1),opacity .22s ease';
-          pg.style.transform = 'perspective(1500px) rotateX(0deg)'; pg.style.opacity = '1';
-          setTimeout(() => busy = false, 520);
-        });
-      }, 280);
-    }
-
-    /* NOTEBOOK */
-    function buildNotebook(stW, stH) {
-      const asp = pgH / pgW;
-      const isMobile = window.innerWidth <= 640;
-      let w = Math.min(Math.round((stW - 40) * (isMobile ? .9 : .68)), isMobile ? 400 : 720);
-      let h = Math.min(Math.round(w * asp), stH - 40); w = Math.round(h / asp);
-      const root = document.getElementById('book-root');
-      const outer = document.createElement('div'); outer.className = 'nb-outer';
-      const rings = document.createElement('div'); rings.className = 'nb-rings'; rings.style.height = h + 'px';
-      for (let i = 0; i < 13; i++) { const r = document.createElement('div'); r.className = 'nb-ring'; rings.appendChild(r); }
-      const pg = document.createElement('div'); pg.className = 'nb-pg';
-      pg.style.cssText = `width:${w}px;height:${h}px;box-shadow:6px 0 28px rgba(0,0,0,.62),0 35px 90px rgba(0,0,0,.78)`;
-      pg.appendChild(pageCanvas(cur, w, h));
-      outer.appendChild(rings); outer.appendChild(pg); root.appendChild(outer);
-      _st = { w, h, pg }; addSwipe(outer);
-    }
-    function nbFlip(dir) {
-      const { w, h, pg } = _st; if (!pg || busy) return; busy = true;
-      const out = dir === 'next' ? '-55px' : '55px', inn = dir === 'next' ? '55px' : '-55px';
-      pg.style.transition = 'transform .28s ease,opacity .26s ease';
-      pg.style.transform = `translateX(${out})`; pg.style.opacity = '0';
-      setTimeout(() => {
-        pg.innerHTML = ''; pg.appendChild(pageCanvas(cur, w, h));
-        pg.style.transition = 'none'; pg.style.transform = `translateX(${inn})`; pg.style.opacity = '0';
-        requestAnimationFrame(() => {
-          pg.style.transition = 'transform .36s cubic-bezier(.4,0,.2,1),opacity .3s ease';
-          pg.style.transform = 'translateX(0)'; pg.style.opacity = '1';
-          setTimeout(() => busy = false, 380);
-        });
-      }, 290);
-    }
 
     /* SWIPE */
     function addSwipe(el) {
       let sx = 0;
       el.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
-      el.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - sx; if (dx < -30) goNext(); else if (dx > 30) goPrev(); });
+      el.addEventListener('touchend',   e => { const dx = e.changedTouches[0].clientX - sx; if (dx < -30) goNext(); else if (dx > 30) goPrev(); });
     }
 
-    /* NAVIGATION */
+    /* ─────────────────────────────────────────────────────────────
+       NAVIGATION
+    ───────────────────────────────────────────────────────────── */
     function goNext() {
       if (busy) return;
       if (effect === 'magazine' || effect === 'book') { if (pf) { onFlipStart(); pf.flipNext('bottom'); } return; }
@@ -1077,11 +731,6 @@
     }
     function dispatch(dir) {
       if (effect === 'slider') sliderTo(cur);
-      else if (effect === 'coverflow') cfRender();
-      else if (effect === 'cards') cardsFlip(dir);
-      else if (effect === 'onepage') oneFlip();
-      else if (effect === 'album') albumFlip();
-      else if (effect === 'notebook') nbFlip(dir);
       updateUI();
     }
     function jumpTo(idx) {
@@ -1089,23 +738,18 @@
       const dir = idx > cur ? 'next' : 'prev'; cur = idx; playFlip(); dispatch(dir); updateUI();
     }
 
-    /* UI */
+    /* ─────────────────────────────────────────────────────────────
+       UI
+    ───────────────────────────────────────────────────────────── */
     function updateUI() {
       document.getElementById('pn').textContent = `Page ${cur + 1} of ${total}`;
       document.getElementById('arr-p').classList.toggle('off', cur <= 0);
       document.getElementById('arr-n').classList.toggle('off', cur >= total - 1);
-      document.querySelectorAll('.thumb').forEach((t, i) => { t.classList.toggle('cur', i === cur); if (i === cur) t.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' }); });
-    }
-    function buildThumbs() {
-      const strip = document.getElementById('ts'); strip.innerHTML = '';
-      for (let i = 0; i < total; i++) {
-        const wrap = document.createElement('div'); wrap.className = 'thumb' + (i === 0 ? ' cur' : '');
-        const c = document.createElement('canvas'); c.width = thumbs[i].width; c.height = thumbs[i].height;
-        c.getContext('2d').drawImage(thumbs[i], 0, 0); wrap.appendChild(c);
-        wrap.onclick = () => jumpTo(i); strip.appendChild(wrap);
-      }
+      document.querySelectorAll('.thumb').forEach((t, i) => {
+        t.classList.toggle('cur', i === cur);
+        if (i === cur) t.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+      });
     }
   </script>
 </body>
-
 </html>

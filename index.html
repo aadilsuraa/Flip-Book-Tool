@@ -336,6 +336,11 @@
     @media (max-width: 380px) {
       .nav-tag { display: none; }
     }
+    /* Protection styles: apply only where needed (use class="protect" on images) */
+    img.protect { -webkit-user-drag: none; user-drag: none; user-select: none; -webkit-user-select: none; }
+    .protect-wrap { position: relative; display: inline-block }
+    .protect-overlay { position: absolute; inset: 0; z-index: 20; }
+    canvas.protect-canvas { display: block; max-width: 100%; height: auto; }
   </style>
 </head>
 
@@ -389,7 +394,7 @@
     'use strict';
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-    const PDF_URL = './SZ-Company-Profile-2027.pdf';
+    const PDF_URL = './SZ-CompanyProfile-2026.pdf';
 
     /* STATE */
     let pdfDoc, total;
@@ -397,6 +402,70 @@
     // ─── KEY OPTIMISATION: cap DPR at 2 (was 3).
     // A DPR-3 canvas has 9× the pixels of DPR-1, crushing render time.
     const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+     /* === Protection utilities ===
+       - Blocks common save/inspect keyboard shortcuts
+       - Disables context menu unless an element has class `allow-context`
+       - Converts <img class="protect"> into a canvas to block drag/right-click
+     */
+    function blockShortcuts() {
+      window.addEventListener('keydown', e => {
+        if (e.ctrlKey || e.metaKey) {
+          const k = e.key.toLowerCase();
+          if (k === 's' || k === 'p' || k === 'u' || (e.shiftKey && k === 'i')) {
+            e.preventDefault(); e.stopPropagation();
+          }
+        }
+        // F12
+        if (e.key === 'F12') { e.preventDefault(); e.stopPropagation(); }
+      }, { passive: false });
+    }
+
+    function blockContextMenu() {
+      document.addEventListener('contextmenu', e => {
+        // allow context where explicitly permitted
+        if (e.target.closest && e.target.closest('.allow-context')) return;
+        e.preventDefault();
+      });
+      document.addEventListener('dragstart', e => e.preventDefault());
+    }
+
+    async function convertProtectedImages() {
+      const imgs = Array.from(document.querySelectorAll('img.protect'));
+      for (const img of imgs) {
+        try {
+          const w = img.naturalWidth || img.width || img.clientWidth || 300;
+          const h = img.naturalHeight || img.height || img.clientHeight || 200;
+          const c = document.createElement('canvas');
+          c.width = w; c.height = h; c.className = 'protect-canvas';
+          const ctx = c.getContext('2d');
+          // draw white background if transparent
+          ctx.fillStyle = '#fff'; ctx.fillRect(0,0,w,h);
+          await new Promise((res, rej) => {
+            const tmp = new Image();
+            tmp.crossOrigin = 'anonymous';
+            tmp.onload = () => { ctx.drawImage(tmp, 0, 0, w, h); res(); };
+            tmp.onerror = rej; tmp.src = img.src;
+            // if already loaded
+            if (img.complete && img.naturalWidth) {
+              ctx.drawImage(img, 0, 0, w, h); res();
+            }
+          });
+          // protected image converted to canvas (no watermark)
+          const wrap = document.createElement('span'); wrap.className = 'protect-wrap';
+          wrap.style.width = img.width ? img.width + 'px' : 'auto';
+          wrap.appendChild(c);
+          // overlay to block interactions
+          const ov = document.createElement('div'); ov.className = 'protect-overlay';
+          wrap.appendChild(ov);
+          img.replaceWith(wrap);
+        } catch (e) {
+          // fallback: leave image but disable drag/context
+          img.draggable = false;
+          img.addEventListener('contextmenu', ev => ev.preventDefault());
+        }
+      }
+    }
 
     let cache = [];          // full-res canvases, indexed by page
     let thumbs = [];         // thumbnail canvases, indexed by page
@@ -464,6 +533,9 @@
         document.getElementById('ldt').textContent = msg;
       };
       const setSub = msg => { document.getElementById('ldsub').textContent = msg; };
+
+      // initialise UI protections and image conversions
+      try { blockShortcuts(); blockContextMenu(); convertProtectedImages(); } catch (e) { console.warn('protection init failed', e); }
 
       try {
         setP(5, 'Fetching PDF…');
